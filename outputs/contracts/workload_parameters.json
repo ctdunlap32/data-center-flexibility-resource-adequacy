@@ -1,0 +1,29 @@
+{
+  "version": "1.0",
+  "produced_by": "notebook 01 \u2014 empirical_evidence",
+  "throughput_assumption_tok_per_sec": 60,
+  "dynamolm": {
+    "available": true,
+    "n_requests": 44107694,
+    "date_range_source": "Azure internal production, 7 days in May 2024",
+    "p99_drain_time_coding_sec": 4.516666666666667,
+    "p99_drain_time_conv_sec": 11.566666666666666,
+    "citation": "Stojkovic et al. HPCA 2025 (DynamoLLM)"
+  },
+  "burstgpt": {
+    "available": true,
+    "n_requests": 5188507,
+    "date_range": [
+      "2024-01-01",
+      "2024-04-30"
+    ],
+    "date_range_source": "Azure OpenAI regional endpoints",
+    "p99_drain_time_sec": 12.116666666666667,
+    "citation": "Wang et al. 2024 (BurstGPT)"
+  },
+  "s3_parameterization": {
+    "value": 0.9,
+    "justification": "P99 drain times across two independent datasets range from 4.5 to 12.1 seconds at 60 tok/s, approximately two orders of magnitude below PJM 10-minute dispatch window. S3 = 0.90 reserves 10% of load for long-running or batched requests.",
+    "pjm_dispatch_window_seconds": 600
+  }
+}

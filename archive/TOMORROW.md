@@ -1,112 +1,124 @@
-# Tomorrow's first task — pick up here
+# Tomorrow's pickup — Phase 3 (build notebook 02)
 
-## State at end of Apr 13 session
+## State at end of prior session
 
-- Repo created, committed, pushed to GitHub ✓
-- Directory structure in place (notebooks/, data/, outputs/, docs/, paper/, archive/) ✓
-- Source-of-truth files archived ✓
-- LICENSE, README.md, requirements.txt, .gitignore created ✓
-- First regression baseline captured: Cross_BA v5 ✓
-  - archive/executed_v5.ipynb
-  - archive/executed_v5.md (human-readable form)
+### Phase 1 (repo skeleton) — COMPLETE ✓
+- All top-level directories exist: `notebooks/`, `data/raw/`, `data/processed/`, `outputs/contracts/`, `outputs/figures/`, `outputs/tables/`, `docs/`, `paper/`, `archive/`
+- `README.md` cleaned up (removed stray code fences, updated cascade numbers to reconciled values 0.0384 / 20.4%, §6 numbers marked TODO)
+- `requirements.txt` cleaned up (prose stripped, bare package list)
+- `paper/` populated with NE_Working_Draft_v19.docx and Dunlap_EPIC_Article_Submission.docx
 
-## Three regression baselines still to capture
+### Phase 2 (notebook 01 — Empirical Evidence) — COMPLETE ✓
+- `notebooks/01_empirical_evidence.ipynb` built from Cross_BA v5 Parts 0-3 + new Part 2 (workload characterization) + new Part 4 (contract exports)
+- 51 cells total, Parts 0-4 in clean structure
+- REPO_ROOT resolver pattern at top of Cell 2-1 makes all paths launch-location-independent (works from repo root or notebooks/ dir)
+- Cell 4-2 PJM zones bug fixed (was filtering dest_zones for 'PJM', now uses `intra_pjm` variable directly)
+- Full regression passes against three baselines:
+  - Part 1 (Cross_BA v5): capacity-weighted overlap 27.2%, dynamic availability 99.0%, all-stressed 1.0%, intra-PJM 49.0%, cross-BA 34.8%, all exact
+  - Part 2 DynamoLLM: 44.1M requests, Coding P99 4.52s, Conv P99 11.57s, exact
+  - Part 2 BurstGPT: P99 12.12s, exact (5.19M rows — uses without_fails version, 5.3M in paper should become 5.2M, see paper-update list)
+  - Part 3: $169.3/MWh cap-weighted mean destination LMP, exact
+- Three contract files written to `outputs/contracts/`:
+  - `stress_correlation_results.json` (headline numbers + per_zone + yearly)
+  - `per_hour_destination_availability.parquet` (200 rows × 21 cols, cross-BA + pjm_co_stressed_mw)
+  - `workload_parameters.json` (DynamoLLM + BurstGPT P99s + S3 = 0.90)
+- One figure: `outputs/figures/figure4_drain_time_cross_validation.png`
+- Committed and pushed to GitHub
 
-### 1. Bartlett v18 (first priority tomorrow)
+### Pre-Phase-2 baselines captured and committed ✓
+- `archive/executed_bartlett_v18.ipynb/.md` — Bartlett v18 pre-reconciliation baseline
+- `archive/executed_bartlett_v18_reconciled.ipynb/.md` — Bartlett v18 reconciled (S2: 0.80→0.70, E1: 0.997→0.95, E2: 0.995→0.98)
+- `archive/executed_P1_Azure_Trace_Analysis.ipynb/.md` — Azure trace baseline
+- `archive/regression_baseline_burstgpt.txt` — BurstGPT regression baseline
+- `archive/executed_v5.md` — Cross_BA v5 regression baseline (from yesterday)
+- `archive/burstgpt_validation.py` — script itself (was missing from repo, added mid-session)
 
-**Problem**: The .ipynb version you made today (with the _pillar3 validation fix)
-is NOT in the repo. Only the .py file is.
+## Next task: Phase 3 — Build notebook 02 (Cascade and Simulation)
 
-**First task**: find the .ipynb. Try searching C:\Users\dunla\ for
-`bartlett_analysis_v18.ipynb`. If it exists, copy it into archive/.
-If it doesn't exist anymore, you'll need to recreate it: open a fresh
-notebook, copy-paste the contents of archive/bartlett_analysis_v18.py
-cell by cell, re-apply the _pillar3 fix (delete the two _check blocks
-in the validation cell that reference _pillar3_committed_mw and
-_pillar3_accredited_mw), save.
+Migration guide Part D.4 (note: guide calls this "Phase 3" while TOMORROW.md from yesterday called it "Phase 3" too, just for notebook 02 not 01).
 
-**Then nbconvert it**, from inside the archive/ directory:
+### Source material for notebook 02
+- **Cascade parameters (Cell 2-1):** Lifted from `archive/bartlett_analysis_v18.ipynb` Cell 0-3, post-reconciliation. Reads S3 from `outputs/contracts/workload_parameters.json` instead of hardcoding.
+- **Variance decomposition (Cell 2-2):** From `archive/bartlett_analysis_v18.ipynb` Cell 2-1 (Sobol-style first-order variance attribution, N=50,000 MC draws)
+- **Conditional Monte Carlo (Cell 3-X):** Lifted from `archive/Cross_BA_Stress_Correlation_v5.ipynb` Part 4 (conditional MC joint D1-D5 feasibility, single facility and fleet). Reads per-hour availability from `outputs/contracts/per_hour_destination_availability.parquet`.
+- **Sensitivity analysis (Cell 4-X):** From `archive/Cross_BA_Stress_Correlation_v5.ipynb` Part 5 (2D surface, tornado chart)
+- **Output contracts:** Two files for notebook 03 consumption:
+  - `outputs/contracts/cascade_parameters.json` — ten parameters, central values, ranges
+  - `outputs/contracts/conditional_mc_results.json` — commitment depth distributions (1 GW, 10 GW, per-GW sweep)
 
-    cd archive
-    jupyter nbconvert --to notebook --execute bartlett_analysis_v18.ipynb --output executed_bartlett_v18.ipynb --ExecutePreprocessor.kernel_name=python3
-    jupyter nbconvert --to markdown executed_bartlett_v18.ipynb
+### Key architectural decisions already locked
+- Notebook 02 reads its inputs from `outputs/contracts/` files produced by notebook 01 — never from raw data directly
+- REPO_ROOT resolver pattern should be used for ALL path references in notebook 02 (copy-paste from notebook 01 Cell 2-1)
+- Cascade parameters use reconciled values: S2=0.70, E1=0.95, E2=0.98 (NOT the old 0.80 / 0.997 / 0.995)
+- Expected headline numbers: cascade product 0.0384, commitment depth 20.4%, accredited MW ~187 @ 1 GW and ~1,875 @ 10 GW
 
-**Watch for**: cell 3 loads three CSVs (DA LMP, RT LMP, load). Their paths
-are hardcoded in the notebook. If those paths are broken, nbconvert fails
-at cell 3 with FileNotFoundError. Fix the paths in the notebook, re-run.
-The Cross_BA v5 process worked because its data loading was already
-correct.
+### The guide's missing content that needs mental translation
+The migration guide's D.4 was written before the parameter reconciliation, so it references the OLD values (0.0467, 21.0%, 448 MW, 2,263 MW, $81M, $407M). When building notebook 02, these all need updating to:
+- Cascade product: 0.0467 → 0.0384
+- Commitment depth: 21.0% → 20.4%
+- Accredited MW @ 1 GW: 448 → ~187 (actual value from reconciled Bartlett v18)
+- Accredited MW @ 10 GW: 2,263 → ~1,875
+- Avoided cost @ 1 GW: $81M → ~$67M (but DON'T update the paper until notebook 03 produces the final number through the new pipeline)
+- Avoided cost @ 10 GW: $407M → ~$335M
 
-### 2. Azure trace notebook (after Bartlett v18)
+### First concrete step for tomorrow
+1. Verify the final clean nbconvert run of notebook 01 committed successfully (look for `per_hour_destination_availability.parquet` showing `pjm_co_stressed_mw` non-zero in sample rows)
+2. Copy `archive/bartlett_analysis_v18.ipynb` → `notebooks/02_cascade_simulation.ipynb` as the starting point
+3. Same pattern as Phase 2: replace title cell, restructure Parts, then deal with what needs to be added from Cross_BA v5 (conditional MC and sensitivity)
+4. Unlike Phase 2, notebook 02 does NOT have a clean 1:1 source file — it's a merge of Bartlett v18 (cascade + variance decomp + capacity market integration) and Cross_BA v5 Parts 4-5 (conditional MC + sensitivity)
 
-**File**: archive/P1_Azure_Trace_Analysis.ipynb
+## Running paper-update list (accumulating items for final paper polish pass)
 
-**Known issue**: The data loading cell hardcodes paths to the Azure CSVs.
-Earlier today, the fix was to use the `r` prefix and point at:
-C:\Users\dunla\OneDrive\Documents\Bartlett Fellowship\Thesis\Data\Azure_Traces\
+Do NOT edit the docx yet — wait until after notebook 03 is complete. These are items to apply in one pass later:
 
-**Check first**: does the version in archive/ have the fix, or the
-original broken path? Open in VS Code and check the CODE_PATH and
-CONV_PATH variables in cell 3. If they point at the Hopper directory
-(the old path), update to the Azure_Traces directory. If they point
-at Azure_Traces already, you're good.
+### Typos
+- "see Mthods" → "see Methods" (Section 4 body)
+- "accomodates" → "accommodates" (Section 4 body)
+- "conversational session with persistent state" → "conversational sessions with persistent state" (plural agreement)
 
-**Then nbconvert**:
+### Methodological precision
+- "5.3 million" BurstGPT requests → "5.2 million" (without_fails version has 5,188,507 rows)
+- "P99 drain times range from 4.5 to 12.12 seconds" → consider "4.5 to 12.1" for clean rounding
+- Methods workload datasets paragraph: rewrite the "Diurnal usage patterns are confirmed in DynamoLLM (peak traffic approximately 2.5 times trough) but weaker in BurstGPT" sentence. Draft replacement:
+  > "Diurnal usage patterns in DynamoLLM range from approximately 3× peak-to-trough for conversational workloads to 35× for coding workloads (ref. 15), while BurstGPT exhibits near-continuous 24-hour activity with minimal weekly periodicity, consistent with differing user populations (Azure OpenAI regional API traffic vs. Azure internal production workloads)."
+  - Verify 3×/35× numbers against ref. 15 (DynamoLLM paper) before committing to them
+  - Verify DynamoLLM dataset characterization matches ref. 15
 
-    cd archive
-    jupyter nbconvert --to notebook --execute P1_Azure_Trace_Analysis.ipynb --output executed_azure.ipynb --ExecutePreprocessor.kernel_name=python3
-    jupyter nbconvert --to markdown executed_azure.ipynb
+### Cascade parameter reconciliation — numbers that need updating everywhere
+- Abstract: cascade product 0.0467 → 0.0384 (if cited)
+- §5 and Methods: commitment depth 21.0% → 20.4%
+- §6: avoided cost @ 1 GW, @ 10 GW, accredited MW numbers
+- Any figures that plot cascade product or commitment depth
+- Methods §2 / Methods cascade parameter specifications (already correct in v19, the code just needed to catch up)
 
-**Expect this to take 15–30 minutes** to run. It loads 44M rows across
-two CSVs. Don't babysit it, just let it run.
+### Other Methods improvements (optional)
+- Could add one sentence justifying the conservative E1/E2 values: "E1 and E2 are held at conservative central values reflecting typical operator-facing SLA envelopes... Variance decomposition confirms E1 and E2 together contribute less than 5% of cascade output variance."
 
-### 3. BurstGPT validation script (after Azure)
+## Other items to revisit (not paper-related)
 
-**File**: archive/burstgpt_validation.py
+### BurstGPT URL fix (polish item for notebook 01)
+The auto-download URLs in Cell 2-3 are stale (404ing). Fix during end-of-phase polish:
+- Check current layout at https://github.com/HPMLL/BurstGPT to find working paths
+- Update `BURSTGPT_URLS` and `BURSTGPT_HF_URLS` dicts in notebook 01 Cell 2-3
+- Not urgent — files are cached locally, only matters for reviewer reproducibility
 
-**This is a script, not a notebook**. nbconvert doesn't apply. Instead:
+### OneDrive / external drive question
+Parked for post-migration cleanup. Current status: Azure traces (1.8 GB) live in OneDrive, notebook 01 uses the `AZURE_DATA_DIR` environment variable pattern to find them. No action needed during Phase 3. Revisit after Phase 5 (Option 3 from yesterday's conversation: move all large data out of OneDrive entirely, set env vars).
 
-    python archive\burstgpt_validation.py > archive\regression_baseline_burstgpt.txt 2>&1
+### Polish pass per notebook
+Plan is one dedicated polish pass per notebook AFTER each notebook is construction-complete and regression-verified. Maybe 90 minutes each:
+- Structural/readability: variable names, banner consistency, markdown cleanup, dead reference removal
+- Correctness/robustness: what-if-input-is-weird defensive code
+- Skip performance polish except for Azure CSV loading (10 min per run is painful)
+- Regression-verify after each polish pass (output should match pre-polish byte-for-byte)
 
-The `> archive\...` captures stdout to a file. The `2>&1` captures stderr
-into the same file. You end with a text file containing everything the
-script printed.
-
-**Expect**: the script auto-downloads BurstGPT data from GitHub on first
-run. Takes a few minutes plus whatever the bandwidth is.
-
-## Once all four baselines are captured
-
-Commit them:
-
-    git add archive\
-    git commit -m "Capture all four regression baselines before migration"
-    git push
-
-## Then start Phase 3
-
-Open Repository_Migration_Guide.md (saved from yesterday's conversation)
-and go to Part D, Phase 3 (Build notebook 01 — Empirical Evidence).
+### Pillar1 and Pillar3 rewrite
+Scheduled for Phase 5 Step 5.3 per migration guide. Pillar1 is currently inconsistent with both code and paper (7-parameter cascade, pre-reconciliation values). Don't touch until notebook 02 and 03 are done. Destination: `docs/technical_appendix_cascade_derivation.md` and `docs/technical_appendix_policy_framework.md`.
 
 ## Important reminders
-
-- Use Anaconda Prompt, not PowerShell. PowerShell has paste issues.
-- Always type `--output` with no space. Never `-- output`.
-- Always pass `--ExecutePreprocessor.kernel_name=python3` to nbconvert.
-- When in doubt, `git status` first.
-- When debugging nbconvert errors, don't try to fix the notebook blind.
-  Report what you see and diagnose first.
-
-## Session-end numbers to verify tomorrow
-
-The Cross_BA v5 baseline (executed_v5.md) should contain these figures
-from the paper. Eyeball-check the file at some point tomorrow to
-confirm they're there:
-
-- 99.0% dynamic availability (ComEd, 198/200 stress hours)
-- 52.0% mean single-facility commitment depth (500 MW)
-- 26.5% empirical fleet commitment depth
-- Per-GW sweep: 48.7%/39.0%/31.5%/24.6%/22.2% at 1/3/5/10/15 GW
-
-If any of these are missing, the nbconvert run didn't complete all the
-way through and we need to re-run.
+- Use Anaconda Prompt, not PowerShell
+- Always pass `--ExecutePreprocessor.kernel_name=python3` to nbconvert
+- Always run nbconvert from the repo root with `notebooks\XX_name.ipynb` as the input path — this makes the REPO_ROOT resolver's `elif _cwd.name == "notebooks"` branch fire correctly
+- Commit and push after each meaningful milestone — don't leave uncommitted work overnight
+- `git` may not be in the Anaconda Prompt PATH; if `git` commands fail with "not recognized," use a regular Command Prompt or add git to the PATH
+- Reviewer reproducibility depends on contract files in `outputs/contracts/` being correct and consistent with their schemas
