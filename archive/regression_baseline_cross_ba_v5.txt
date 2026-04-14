@@ -1,0 +1,70 @@
+0.2 Load Preprocessed Parquet Data
+Loads the hourly and daily LMP parquets plus the zone metadata table produced by price_data_preprocessing.ipynb. The meta table is the single source of truth for which zones are destinations, their DC MW, their RTO, and their migration role (cross-BA destination vs intra-RTO control vs source). Every downstream filter references meta.
+
+# ══════════════════════════════════════════════════════════════════════════════
+Hourly: 894,646 rows, 26 zones
+Daily:  39,143 rows, 28 zones
+Meta:   28 zones
+
+Zone classification:
+  Source:          PJM_COMED
+  Intra-PJM ctrl: ['PJM_DOM', 'PJM_AEP', 'PJM_BGE', 'PJM_PECO', 'PJM_PEPCO', 'PJM_PSEG']
+  Destinations:    21 zones
+
+Price matrix: 35,064 hours × 26 zones
+
+0.3 Stress Hour Identification (Price-Based)
+Identifies ComEd stress hours as the top-N% of DA LMP hours across the 35,060-hour window. The in-cell rationale block explains why price-only (not union with demand) is the correct definition for this pillar. All Part 1–5 analyses are conditioned on the source_stress_idx produced here.
+
+6.2 Paper Summary Block — Methodology Appendix 3.4
+Prints the consolidated numbers for the paper's Methodology Appendix 3.4 (cross-BA stress correlation methods) and Section 5.3 (headline results). Designed for copy-paste directly into the draft — re-run whenever upstream cells change and re-paste rather than hand-editing the paper.
+
+# ══════════════════════════════════════════════════════════════════════════════
+==========================================================================================
+SUMMARY — VALUES FOR PAPER
+==========================================================================================
+
+  ┌───────────────────────────────────────────────────────────────────────────┐
+  │ STRESS IDENTIFICATION                                                     │
+  │   Method: Top 50 DA LMP hours per year per zone (price-only)             │
+  │   Source: PJM_COMED (ComEd zone DA LMP)                              │
+  │   Years:  2022–2025 (4 years)                                          │
+  │                                                                           │
+  │ HEADLINE RESULTS                                                          │
+  │   Intra-PJM avg overlap:          49.0%                              │
+  │   Cross-BA cap-weighted overlap:   27.2%                              │
+  │   Dynamic availability:           99.0%                              │
+  │   All destinations stressed:        1.0%                              │
+  │                                                                           │
+  │ DESTINATION PRICING (during ComEd stress)                                 │
+  │   Cap-weighted mean:  $ 169.3/MWh (vs DESTINATION_LMP_CRISIS = $120) │
+  │   Cap-weighted median: $ 102.6/MWh                                   │
+  │                                                                           │
+  │ DESTINATION CAPACITY                                                      │
+  │   Total:       19,039 MW across 19 zones                          │
+  │   Coverage:  100% of mapped destination DC capacity has pricing data      │
+  └───────────────────────────────────────────────────────────────────────────┘
+
+  Implication for v10 assumed CF of 5.0%:
+    Empirical CF (27.2%) > assumed (5.0%)
+    → Revise v10 coincidence factor upward.
+
+  Key findings for paper text:
+  1. Intra-PJM zones overlap 49% with ComEd during stress — same-RTO
+     migration provides limited resource adequacy value.
+  2. Cross-BA destinations overlap 27.2% (capacity-weighted) — spatial
+     migration across BA boundaries accesses fundamentally decorrelated capacity.
+  3. Dynamic destination selection achieves 99.0% availability — at least
+     one destination is non-stressed during virtually all ComEd stress hours.
+  4. The cross-IC case (ERCOT, WECC) is the most dramatic decorrelation, but
+     MISO sub-regions with different weather/gas exposure also show meaningful
+     decorrelation from ComEd — supporting the cross-BA generalization.
+
+  Data sources:
+    PJM zones:   DA LMP from PJM Data Miner (ComEd, DOM, AEP, BGE, PECO, PEPCO, PSEG)
+    ERCOT zones: DA SPP from ERCOT MIS via gridstatus (LZ_NORTH, LZ_SOUTH, LZ_WEST, LZ_HOUSTON)
+    CAISO zones: DA LMP from CAISO OASIS (NP15, SP15)
+    NYISO zones: DA LBMP from NYISO via gridstatus (Zones A, F, G, J, K)
+    MISO hubs:   DA ExPost LMP from MISO market reports (8 commercial pricing hubs)
+    WECC bilateral: EIA/ICE daily on-peak (Mid-C, Palo Verde)
+    DC inventory: Baxtel/DOE county-level capacity database (546 counties)

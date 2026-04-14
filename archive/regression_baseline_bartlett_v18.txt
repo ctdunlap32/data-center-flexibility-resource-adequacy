@@ -1,0 +1,1136 @@
+DA after version de-dupe: 35,060 rows
+  DA LMPs: 35,060 hours, 2022-01-01 00:00:00 to 2025-12-31 23:00:00
+  Per year: {2022: 8759, 2023: 8759, 2024: 8783, 2025: 8759}
+RT after version de-dupe: 35,060 rows
+  RT LMPs: 35,060 hours
+  Load: 35,064 hours
+  2022: DA=8759/8760 Load=8760/8760
+  2023: DA=8759/8760 Load=8760/8760
+  2024: DA=8783/8784 Load=8784/8784
+  2025: DA=8759/8760 Load=8760/8760
+
+--- All data loaded. ---
+Parameters loaded (v16).
+  GPU economics: 603 GPUs/MW (grid) | 784 GPUs/MW (IT)
+  Compute value: $1,327/MWh
+  Thermo efficiency: 97.1% for 4.0-hr events
+  E3 avoided CT cost: $180,000/MW-yr
+  Training migration cost/event: $332/MW  (latency=15 min)
+  Inference routing cost/event:  $0/MW  (drain=12.1s, no lost compute)
+TEN-PARAMETER CASCADE (Pillar 1, v17)
+  Source-side:
+    S1  (candidacy):       0.70   [STRUCTURAL]
+    S2a (data locality):   0.80   [ESTIMATED-WEAK]
+    S2b (timing):          0.90   [ESTIMATED]
+  Destination-side:
+    D1  (availability):    0.990  [DATA — empirical]
+    D2  (util headroom):   0.33   [ESTIMATED-WEAK]
+    D3  (HW compat):      0.88   [ESTIMATED-MODERATE]
+    D4  (inf share):      0.50   [ESTIMATED-MODERATE]
+    D5  (pre-staging):    0.65   [ESTIMATED-WEAK]
+  Execution:
+    E1  (completion):      0.997  [ESTIMATED]
+    E2  (bandwidth):       0.995  [ESTIMATED]
+  ─────────────────────────────────
+  PRODUCT (central):     0.0467
+  PRODUCT (cons/opt):    0.0088 / 0.1548
+  Commitment depth:      21.0%  (= 0.0467 spatial + 0.1633 DVFS on shiftable residual)
+✓ v4 empirical values loaded:
+  DESTINATION_LMP_CRISIS = $169.3/MWh
+  DEST_LMP_ERCOT   = $182.3/MWh
+  DEST_LMP_WESTERN = $112.2/MWh
+  DEST_LMP_MISO    = $159.0/MWh
+  DEST_LMP_NYISO   = $193.2/MWh
+  DEST_LMP_EASTERN = $163.5/MWh (MISO+NYISO combined)
+  EMPIRICAL_CF     = 0.272 (27.2%)
+DA LMP STATISTICS BY YEAR ($/MWh)
+==========================================================================================
+      2022: Mean=$  60.40  Med=$  51.65  P95=$  123.57  P99=$  173.55  Max=$   363.78  Neg%=  0.0%
+      2023: Mean=$  26.68  Med=$  25.04  P95=$   46.72  P99=$   64.64  Max=$   292.76  Neg%=  0.8%
+      2024: Mean=$  25.55  Med=$  22.36  P95=$   52.58  P99=$   93.55  Max=$   277.22  Neg%=  0.6%
+      2025: Mean=$  36.64  Med=$  30.89  P95=$   78.05  P99=$  134.94  Max=$   497.18  Neg%=  1.2%
+ 2022-2025: Mean=$  37.31  Med=$  30.15  P95=$   90.45  P99=$  143.73  Max=$   497.18  Neg%=  0.7%
+
+
+SEASONAL DISTRIBUTION OF TOP-100 LMP HOURS
+======================================================================
+
+2022:
+    Summer:  62 hours  (avg $  202.43/MWh)
+    Winter:  35 hours  (avg $  232.69/MWh)
+    Spring:   1 hours  (avg $  173.44/MWh)
+      Fall:   2 hours  (avg $  173.44/MWh)
+  Peak hours: 17:00 (19), 16:00 (17), 15:00 (9)
+
+2023:
+    Summer:  62 hours  (avg $  106.11/MWh)
+    Winter:   5 hours  (avg $   76.76/MWh)
+    Spring:   1 hours  (avg $   66.04/MWh)
+      Fall:  32 hours  (avg $   72.82/MWh)
+  Peak hours: 17:00 (24), 16:00 (19), 18:00 (16)
+
+2024:
+    Summer:  29 hours  (avg $  120.16/MWh)
+    Winter:  69 hours  (avg $  133.43/MWh)
+    Spring:   0 hours  (avg $    0.00/MWh)
+      Fall:   2 hours  (avg $   88.54/MWh)
+  Peak hours: 17:00 (16), 18:00 (9), 16:00 (8)
+
+2025:
+    Summer:  44 hours  (avg $  227.05/MWh)
+    Winter:  49 hours  (avg $  188.05/MWh)
+    Spring:   0 hours  (avg $    0.00/MWh)
+      Fall:   7 hours  (avg $  143.21/MWh)
+  Peak hours: 18:00 (15), 19:00 (13), 17:00 (11)
+LOAD-BASED STRESS EVENTS
+Top 50 hours per year by ComEd hourly load (MW)
+==========================================================================================
+
+  2022: 12 events from 50 stress hours
+    2022-06-14 13:00 —  9h  peak=20,606 MW  (Summer)
+    2022-06-15 12:00 — 10h  peak=20,731 MW  (Summer)
+    2022-06-16 15:00 —  5h  peak=19,210 MW  (Summer)
+    2022-06-20 18:00 —  1h  peak=18,535 MW  (Summer)
+    2022-06-21 13:00 — 10h  peak=21,262 MW  (Summer)
+    2022-06-30 17:00 —  1h  peak=18,545 MW  (Summer)
+    2022-07-05 14:00 —  5h  peak=19,685 MW  (Summer)
+    2022-07-19 16:00 —  2h  peak=18,583 MW  (Summer)
+    2022-07-21 15:00 —  4h  peak=19,172 MW  (Summer)
+    2022-08-02 18:00 —  1h  peak=18,535 MW  (Summer)
+    2022-08-03 14:00 —  1h  peak=18,507 MW  (Summer)
+    2022-08-06 16:00 —  1h  peak=18,531 MW  (Summer)
+
+  2023: 8 events from 50 stress hours
+    2023-07-05 14:00 —  2h  peak=18,252 MW  (Summer)
+    2023-07-25 17:00 —  2h  peak=17,973 MW  (Summer)
+    2023-07-27 13:00 —  8h  peak=19,358 MW  (Summer)
+    2023-07-28 14:00 —  6h  peak=19,294 MW  (Summer)
+    2023-08-22 16:00 —  4h  peak=18,262 MW  (Summer)
+    2023-08-23 11:00 — 13h  peak=21,929 MW  (Summer)
+    2023-08-24 10:00 — 13h  peak=22,467 MW  (Summer)
+    2023-09-05 14:00 —  2h  peak=18,322 MW  (Shoulder)
+
+  2024: 10 events from 50 stress hours
+    2024-06-17 14:00 —  8h  peak=19,874 MW  (Summer)
+    2024-06-18 15:00 —  5h  peak=19,495 MW  (Summer)
+    2024-06-19 14:00 —  6h  peak=19,486 MW  (Summer)
+    2024-06-21 17:00 —  2h  peak=18,568 MW  (Summer)
+    2024-07-15 16:00 —  4h  peak=19,220 MW  (Summer)
+    2024-07-30 16:00 —  3h  peak=18,610 MW  (Summer)
+    2024-07-31 17:00 —  3h  peak=18,912 MW  (Summer)
+    2024-08-05 15:00 —  2h  peak=18,890 MW  (Summer)
+    2024-08-26 14:00 —  8h  peak=20,851 MW  (Summer)
+    2024-08-27 12:00 —  9h  peak=21,560 MW  (Summer)
+
+  2025: 12 events from 50 stress hours
+    2025-06-22 18:00 —  2h  peak=19,134 MW  (Summer)
+    2025-06-23 13:00 —  9h  peak=20,714 MW  (Summer)
+    2025-06-24 13:00 —  2h  peak=19,244 MW  (Summer)
+    2025-06-26 14:00 —  6h  peak=20,152 MW  (Summer)
+    2025-07-16 14:00 —  2h  peak=19,410 MW  (Summer)
+    2025-07-23 15:00 —  7h  peak=20,375 MW  (Summer)
+    2025-07-24 13:00 —  3h  peak=19,914 MW  (Summer)
+    2025-07-28 15:00 —  5h  peak=19,594 MW  (Summer)
+    2025-07-29 14:00 —  6h  peak=19,749 MW  (Summer)
+    2025-08-07 17:00 —  2h  peak=19,140 MW  (Summer)
+    2025-08-08 14:00 —  5h  peak=19,732 MW  (Summer)
+    2025-08-11 18:00 —  1h  peak=19,034 MW  (Summer)
+
+
+PRICE-BASED STRESS EVENTS
+Top 50 hours per year by DA LMP, conditionally merged
+(gaps ≤18h merged when median gap price > 75th percentile annual LMP)
+==========================================================================================
+
+  2022: 15 raw clusters → 7 events after merge
+    2022-06-14 14:00 —  53h window (18 stress hrs)  peak=$329/MWh  (Summer)
+    2022-06-21 16:00 —   3h window ( 3 stress hrs)  peak=$219/MWh  (Summer)
+    2022-07-20 16:00 —   2h window ( 2 stress hrs)  peak=$201/MWh  (Summer)
+    2022-07-21 16:00 —   2h window ( 2 stress hrs)  peak=$201/MWh  (Summer)
+    2022-07-22 16:00 —   2h window ( 2 stress hrs)  peak=$203/MWh  (Summer)
+    2022-08-29 16:00 —   2h window ( 2 stress hrs)  peak=$199/MWh  (Summer)
+    2022-12-24 08:00 —  72h window (21 stress hrs)  peak=$364/MWh  (Winter)
+
+  2023: 19 raw clusters → 19 events after merge
+    2023-02-03 18:00 —   3h window ( 3 stress hrs)  peak=$90/MWh  (Winter)
+    2023-06-01 17:00 —   1h window ( 1 stress hrs)  peak=$79/MWh  (Summer)
+    2023-06-02 16:00 —   1h window ( 1 stress hrs)  peak=$75/MWh  (Summer)
+    2023-06-29 17:00 —   1h window ( 1 stress hrs)  peak=$78/MWh  (Summer)
+    2023-06-30 16:00 —   2h window ( 2 stress hrs)  peak=$77/MWh  (Summer)
+    2023-07-24 17:00 —   1h window ( 1 stress hrs)  peak=$75/MWh  (Summer)
+    2023-07-25 16:00 —   2h window ( 2 stress hrs)  peak=$80/MWh  (Summer)
+    2023-07-26 16:00 —   3h window ( 3 stress hrs)  peak=$87/MWh  (Summer)
+    2023-07-27 12:00 —   9h window ( 9 stress hrs)  peak=$282/MWh  (Summer)
+    2023-07-28 12:00 —   8h window ( 8 stress hrs)  peak=$293/MWh  (Summer)
+    2023-08-21 16:00 —   2h window ( 2 stress hrs)  peak=$77/MWh  (Summer)
+    2023-08-23 16:00 —   3h window ( 3 stress hrs)  peak=$82/MWh  (Summer)
+    2023-08-24 15:00 —   4h window ( 4 stress hrs)  peak=$86/MWh  (Summer)
+    2023-10-02 16:00 —   2h window ( 2 stress hrs)  peak=$91/MWh  (Shoulder)
+    2023-10-03 16:00 —   3h window ( 3 stress hrs)  peak=$101/MWh  (Shoulder)
+    2023-10-04 16:00 —   2h window ( 2 stress hrs)  peak=$85/MWh  (Shoulder)
+    2023-10-23 07:00 —   1h window ( 1 stress hrs)  peak=$100/MWh  (Shoulder)
+    2023-10-27 17:00 —   1h window ( 1 stress hrs)  peak=$76/MWh  (Shoulder)
+    2023-11-01 07:00 —   1h window ( 1 stress hrs)  peak=$75/MWh  (Shoulder)
+
+  2024: 8 raw clusters → 5 events after merge
+    2024-01-15 05:00 —  53h window (39 stress hrs)  peak=$277/MWh  (Winter)
+    2024-07-15 15:00 —   4h window ( 4 stress hrs)  peak=$172/MWh  (Summer)
+    2024-08-27 15:00 —   4h window ( 4 stress hrs)  peak=$174/MWh  (Summer)
+    2024-08-28 16:00 —   2h window ( 2 stress hrs)  peak=$135/MWh  (Summer)
+    2024-12-02 07:00 —   1h window ( 1 stress hrs)  peak=$140/MWh  (Winter)
+
+  2025: 13 raw clusters → 7 events after merge
+    2025-01-20 07:00 —  50h window (22 stress hrs)  peak=$277/MWh  (Winter)
+    2025-02-21 07:00 —   1h window ( 1 stress hrs)  peak=$207/MWh  (Winter)
+    2025-06-23 16:00 —  29h window (11 stress hrs)  peak=$354/MWh  (Summer)
+    2025-06-25 17:00 —   3h window ( 3 stress hrs)  peak=$195/MWh  (Summer)
+    2025-07-24 19:00 —   1h window ( 1 stress hrs)  peak=$204/MWh  (Summer)
+    2025-07-28 17:00 —  28h window (11 stress hrs)  peak=$497/MWh  (Summer)
+    2025-10-06 18:00 —   1h window ( 1 stress hrs)  peak=$187/MWh  (Shoulder)
+
+
+COMBINED EVENTS (load ∪ price, de-overlapped)
+==========================================================================================
+  2022: 14 events, 159h total window, 2 events >24h
+  2023: 22 events, 78h total window, 0 events >24h
+  2024: 13 events, 107h total window, 1 events >24h
+  2025: 15 events, 146h total window, 3 events >24h
+EVENT DURATION DISTRIBUTION (pooled across 4 years)
+==========================================================================================
+  Duration |  Load   hrs | Price raw   hrs | Price merged   hrs
+  ---------+-------------+-----------------+-------------------
+      1-2h |   16    26h |       27    38h |          21    31h
+      3-4h |    6    21h |       11    38h |           9    30h
+      5-8h |   13    80h |       14    88h |           1     8h
+     9-16h |    7    73h |        2    18h |           1     9h
+    17-24h |    0     0h |        1    18h |           0     0h
+      24+h |    0     0h |        0     0h |           6   285h
+
+  Hours in events >4h:  Load: 76%  |  Price (merged): 83%
+  Hours in events >24h: Price (merged): 79%
+
+
+SEASONAL DISTRIBUTION OF STRESS EVENTS
+==========================================================================================
+
+  Load-based:
+        Summer:  41 events,  198h ( 99%)
+      Shoulder:   1 events,    2h (  1%)
+
+  Price-based (merged):
+        Summer:  25 events,  172h ( 47%)
+        Winter:   6 events,  180h ( 50%)
+      Shoulder:   7 events,   11h (  3%)
+
+
+HEADLINE FINDINGS:
+  1. Load-based stress is 99% summer — short-to-medium events (median ~4h).
+     A 4h battery covers most of these.
+  
+  2. Price-based stress is 50% winter — reveals multi-day crises:
+     • Dec 2022 crisis: 72h event window
+     • Jun 2022 crisis: 53h event window
+     • Jan 2024 crisis: 53h event window
+     A 4h battery is exhausted in the first morning of these events.
+  
+  3. Price-based events are what drive PJM Performance Assessment Hours.
+     Any capacity resource that cannot sustain delivery beyond 4 hours
+     faces escalating CP penalty exposure during these events.
+  
+  4. This duration gap determines how deeply a DC can credibly commit
+     as DR or non-firm load — quantified in Part 3.
+
+CASCADE MONTE CARLO (N=50,000, 10-parameter)
+======================================================================
+  Cascade product:   mean=0.0463, std=0.0176, [P5=0.0224, P95=0.0792]
+  Commitment depth:  mean=0.2097 (21.0%), std=0.0132, [P5=19.2%, P95=23.4%]
+
+  VARIANCE ATTRIBUTION (η² correlation ratios, 10 parameters):
+  Parameter    |       η² |  % of Σ η² |       Grounding
+  ───────────────────────────────────────────────────────
+  D2           |    0.423 |      44.2% |            WEAK
+  D4           |    0.268 |      28.0% |        Moderate
+  D5           |    0.125 |      13.1% |            WEAK
+  S2a          |    0.121 |      12.6% |            WEAK
+  D3           |    0.010 |       1.0% |        Moderate
+  S2b          |    0.008 |       0.9% |        Moderate
+  D1           |    0.001 |       0.1% |          STRONG
+  E2           |    0.000 |       0.1% |          Strong
+  E1           |    0.000 |       0.0% |        Moderate
+
+  Sum η² = 0.958 (≈1.0 confirms negligible parameter interactions)
+
+  INTERPRETATION:
+    With 10-parameter decomposition, variance is distributed across D2, D5,
+    S2a, D4 (the weakest-grounded parameters with widest ranges).
+    Phase 4 sensitivity surface will focus on D2 and D5.
+CASCADE SCENARIO SUMMARY
+==========================================================================================
+
+  Scenario         |  Cascade |  Commit |   Firm |  Committed MW |  Accred MW |  Accred MW
+                   |  Product |   Depth |  Level |       @ 10 GW |    @ 10 GW |    @ 20 GW
+  ─────────────────────────────────────────────────────────────────────────────────────
+  Conservative     |    0.009 |  18.2% | 81.8% |       1,816 MW |    1,671 MW |    3,341 MW
+  Central          |    0.047 |  21.0% | 79.0% |       2,100 MW |    1,932 MW |    3,865 MW
+  Optimistic       |    0.155 |  29.1% | 70.9% |       2,911 MW |    2,678 MW |    5,357 MW
+
+  DVFS-only floor |        — |  17.5% | 82.5% |       1,750 MW |    1,610 MW |    3,220 MW
+
+
+  PARAMETER SENSITIVITY (one-at-a-time, 10 GW fleet)
+  Parameter    |    Low |   High |  Depth Lo |  Depth Hi |  Δ Accred MW
+  ─────────────────────────────────────────────────────────────────
+  S2a          |  0.600 |  0.950 |    20.1% |    21.7% |       +141 MW
+  S2b          |  0.850 |  0.950 |    20.8% |    21.2% |        +36 MW
+  D1           |  0.945 |  0.995 |    20.8% |    21.0% |        +16 MW
+  D2           |  0.200 |  0.500 |    19.6% |    22.8% |       +293 MW
+  D3           |  0.800 |  0.920 |    20.7% |    21.2% |        +44 MW
+  D4           |  0.330 |  0.670 |    19.8% |    22.2% |       +219 MW
+  D5           |  0.500 |  0.800 |    20.2% |    21.8% |       +149 MW
+  E1           |  0.995 |  0.999 |    21.0% |    21.0% |         +1 MW
+  E2           |  0.990 |  1.000 |    21.0% |    21.0% |         +3 MW
+
+  Ranked by impact on accredited capacity:
+    1. D2          :    +293 MW  ███████
+    2. D4          :    +219 MW  █████
+    3. D5          :    +149 MW  ███
+    4. S2a         :    +141 MW  ███
+    5. D3          :     +44 MW  █
+    6. S2b         :     +36 MW  █
+    7. D1          :     +16 MW  █
+    8. E2          :      +3 MW  █
+    9. E1          :      +1 MW  █
+
+  KEY TAKEAWAY:
+    With 10-parameter decomposition, sensitivity is distributed across
+    D2 (utilization headroom), D5 (pre-staging), S2a (data locality),
+    and D4 (inference share). Phase 4 sensitivity surface will map D2 x D5.
+COMMITMENT OPTIMIZATION FRAMEWORK
+==========================================================================================
+  DR ELCC: 92% (PJM class rating — exogenous)
+  BRA clearing: $121,789/MW-yr per accredited MW
+  Revenue per committed MW: $112,046/MW-yr
+
+MECHANISM COST PROFILES
+------------------------------------------------------------------------------------------
+  DVFS                : depth=18%, duration=indefinite, cost=$27/MWh
+  BTM Battery         : depth=100%, duration=4h, cost=$15/MWh
+  Spatial Migration   : depth=5%, duration=indefinite, cost=$252/MWh
+  Spatial (Inference) : depth=5%, duration=indefinite, cost=$169/MWh
+
+  Spatial cost breakdown (training migration):
+    Destination LMP during stress:  $169.3/MWh  (empirical, capacity-weighted)
+    Migration friction (amortized): $82.9/MWh  (= $1,327 × 15min/60 / 4.0h)
+    Total:                          $252.2/MWh
+
+  Inference routing cost:
+    Destination LMP during stress:  $169.3/MWh
+    Migration friction:             $0/MWh  (no checkpoint; drain=12.1s)
+    Total:                          $169.3/MWh
+
+PORTFOLIO DEFINITIONS
+------------------------------------------------------------------------------------------
+  DVFS Only           : depth=18%, cost=$27/MWh, CapEx=$0/MW
+    Software-only. Lowest cost, shallowest commitment.
+  DVFS + Battery      : depth=18%, cost=$27/MWh, CapEx=$1,500,000/MW
+    Battery = NPC insurance for events where DVFS insufficient.
+  DVFS + Spatial      : depth=21%, cost=$77/MWh, CapEx=$0/MW
+    KEY PORTFOLIO. Spatial doubles commitment. Requires orchestration layer.
+  Full Stack          : depth=21%, cost=$77/MWh, CapEx=$1,500,000/MW
+    Maximum depth + battery insurance.
+
+  Depth breakdown: 5% migrated + 16.3% DVFS on remainder = 21.0% total
+EMPIRICAL DISPATCH DISTRIBUTION (from Part 1 combined events)
+------------------------------------------------------------------------------------------
+  2022: 14 events, 159 total dispatch hours, max duration = 72h, median = 2h
+  2023: 22 events, 78 total dispatch hours, max duration = 13h, median = 2h
+  2024: 13 events, 107 total dispatch hours, max duration = 53h, median = 5h
+  2025: 15 events, 146 total dispatch hours, max duration = 50h, median = 3h
+
+  Summary: 16 events/yr avg, 122 dispatch hours/yr avg
+  Duration: max=72h, P95=47h, P99=61h
+
+  Events exceeding duration thresholds:
+    >  4h: 21/64 events (33%)
+    >  8h: 11/64 events (17%)
+    > 12h: 8/64 events (12%)
+    > 24h: 6/64 events (9%)
+    > 48h: 4/64 events (6%)
+    > 72h: 0/64 events (0%)
+
+NPC EXPOSURE ANALYSIS
+------------------------------------------------------------------------------------------
+  NPC rate: $2,500/MWh of non-delivery (estimated)
+
+  DVFS Only           : Duration=indefinite → NPC exposure: $0/yr
+  DVFS + Battery      : Duration=indefinite → NPC exposure: $0/yr
+  DVFS + Spatial      : Duration=indefinite → NPC exposure: $0/yr
+  Full Stack          : Duration=indefinite → NPC exposure: $0/yr
+
+  Key: indefinite-duration portfolios (DVFS, Spatial) face zero NPC
+  from duration exhaustion. Battery-only faces severe tail risk.
+
+COMMITMENT OPTIMIZATION BY PORTFOLIO
+==========================================================================================
+
+  DVFS Only (depth=18%, cost=$27/MWh)
+   Fleet |  Committed | Accredited |      Revenue |  Disp Cost |   NPC Cost |      CapEx |    Net Value |     Net/MW
+  ---------------------------------------------------------------------------------------------------------
+     1 GW |        175 |        161 | $      19.6M | $     0.6M | $     0.0M | $     0.0M | $      19.0M | $ 108,796
+     2 GW |        350 |        322 | $      39.2M | $     1.1M | $     0.0M | $     0.0M | $      38.1M | $ 108,796
+     5 GW |        875 |        805 | $      98.0M | $     2.8M | $     0.0M | $     0.0M | $      95.2M | $ 108,796
+    10 GW |      1,750 |      1,610 | $     196.1M | $     5.7M | $     0.0M | $     0.0M | $     190.4M | $ 108,796
+    15 GW |      2,625 |      2,415 | $     294.1M | $     8.5M | $     0.0M | $     0.0M | $     285.6M | $ 108,796
+    20 GW |      3,500 |      3,220 | $     392.2M | $    11.4M | $     0.0M | $     0.0M | $     380.8M | $ 108,796
+
+  DVFS + Battery (depth=18%, cost=$27/MWh)
+   Fleet |  Committed | Accredited |      Revenue |  Disp Cost |   NPC Cost |      CapEx |    Net Value |     Net/MW
+  ---------------------------------------------------------------------------------------------------------
+     1 GW |        175 |        161 | $      19.6M | $     0.6M | $     0.0M | $    26.2M | $      -7.2M | $ -41,204
+     2 GW |        350 |        322 | $      39.2M | $     1.1M | $     0.0M | $    52.5M | $     -14.4M | $ -41,204
+     5 GW |        875 |        805 | $      98.0M | $     2.8M | $     0.0M | $   131.2M | $     -36.1M | $ -41,204
+    10 GW |      1,750 |      1,610 | $     196.1M | $     5.7M | $     0.0M | $   262.5M | $     -72.1M | $ -41,204
+    15 GW |      2,625 |      2,415 | $     294.1M | $     8.5M | $     0.0M | $   393.8M | $    -108.2M | $ -41,204
+    20 GW |      3,500 |      3,220 | $     392.2M | $    11.4M | $     0.0M | $   525.0M | $    -144.2M | $ -41,204
+
+  DVFS + Spatial (depth=21%, cost=$77/MWh)
+   Fleet |  Committed | Accredited |      Revenue |  Disp Cost |   NPC Cost |      CapEx |    Net Value |     Net/MW
+  ---------------------------------------------------------------------------------------------------------
+     1 GW |        210 |        193 | $      23.5M | $     2.0M | $     0.0M | $     0.0M | $      21.6M | $ 102,647
+     2 GW |        420 |        386 | $      47.1M | $     3.9M | $     0.0M | $     0.0M | $      43.1M | $ 102,647
+     5 GW |      1,050 |        966 | $     117.7M | $     9.9M | $     0.0M | $     0.0M | $     107.8M | $ 102,647
+    10 GW |      2,100 |      1,932 | $     235.3M | $    19.7M | $     0.0M | $     0.0M | $     215.6M | $ 102,647
+    15 GW |      3,151 |      2,899 | $     353.0M | $    29.6M | $     0.0M | $     0.0M | $     323.4M | $ 102,647
+    20 GW |      4,201 |      3,865 | $     470.7M | $    39.5M | $     0.0M | $     0.0M | $     431.2M | $ 102,647
+
+  Full Stack (depth=21%, cost=$77/MWh)
+   Fleet |  Committed | Accredited |      Revenue |  Disp Cost |   NPC Cost |      CapEx |    Net Value |     Net/MW
+  ---------------------------------------------------------------------------------------------------------
+     1 GW |        210 |        193 | $      23.5M | $     2.0M | $     0.0M | $    31.5M | $      -9.9M | $ -47,353
+     2 GW |        420 |        386 | $      47.1M | $     3.9M | $     0.0M | $    63.0M | $     -19.9M | $ -47,353
+     5 GW |      1,050 |        966 | $     117.7M | $     9.9M | $     0.0M | $   157.5M | $     -49.7M | $ -47,353
+    10 GW |      2,100 |      1,932 | $     235.3M | $    19.7M | $     0.0M | $   315.1M | $     -99.5M | $ -47,353
+    15 GW |      3,151 |      2,899 | $     353.0M | $    29.6M | $     0.0M | $   472.6M | $    -149.2M | $ -47,353
+    20 GW |      4,201 |      3,865 | $     470.7M | $    39.5M | $     0.0M | $   630.1M | $    -198.9M | $ -47,353
+
+
+==========================================================================================
+PORTFOLIO COMPARISON AT REFERENCE FLEET SIZES (1 GW, 10 GW)
+==========================================================================================
+
+  ── 1 GW (individual facility scale) ──
+  Portfolio            |  Depth |  Committed |  Accred MW |      Revenue |    Net Value |     Net/MW
+  ----------------------------------------------------------------------------------------------------
+  DVFS Only            |   18% |        175 |        161 | $      19.6M | $      19.0M | $ 108,796
+  DVFS + Battery       |   18% |        175 |        161 | $      19.6M | $      -7.2M | $ -41,204
+  DVFS + Spatial       |   21% |        210 |        193 | $      23.5M | $      21.6M | $ 102,647
+  Full Stack           |   21% |        210 |        193 | $      23.5M | $      -9.9M | $ -47,353
+
+  SPATIAL MIGRATION UPLIFT (DVFS+Spatial vs DVFS Only) at 1 GW:
+    Additional accredited MW:         +32 MW
+    Additional revenue:        $      +3.9M/yr
+    Additional net value:      $      +2.5M/yr
+    → Spatial adds 20% more accredited capacity
+
+  ── 10 GW (fleet scale) ──
+  Portfolio            |  Depth |  Committed |  Accred MW |      Revenue |    Net Value |     Net/MW
+  ----------------------------------------------------------------------------------------------------
+  DVFS Only            |   18% |      1,750 |      1,610 | $     196.1M | $     190.4M | $ 108,796
+  DVFS + Battery       |   18% |      1,750 |      1,610 | $     196.1M | $     -72.1M | $ -41,204
+  DVFS + Spatial       |   21% |      2,100 |      1,932 | $     235.3M | $     215.6M | $ 102,647
+  Full Stack           |   21% |      2,100 |      1,932 | $     235.3M | $     -99.5M | $ -47,353
+
+  SPATIAL MIGRATION UPLIFT (DVFS+Spatial vs DVFS Only) at 10 GW:
+    Additional accredited MW:        +322 MW
+    Additional revenue:        $     +39.3M/yr
+    Additional net value:      $     +25.2M/yr
+    → Spatial adds 20% more accredited capacity
+
+
+==========================================================================================
+CONNECT-AND-MANAGE: COMMITMENT → FIRM SERVICE LEVEL
+==========================================================================================
+
+  Under flexible interconnection (Option B), committed MW = non-firm load.
+  PJM load forecast reflects firm service level, not nameplate.
+
+  Portfolio            |  Fleet |  Committed | Firm Level |  % Firm | Demand Reduction
+  -------------------------------------------------------------------------------------
+  DVFS Only            |    1 GW |        175 |        825 |    82% |            175 MW
+  DVFS Only            |    5 GW |        875 |      4,125 |    82% |            875 MW
+  DVFS Only            |   10 GW |      1,750 |      8,250 |    82% |          1,750 MW
+  DVFS Only            |   20 GW |      3,500 |     16,500 |    82% |          3,500 MW
+  DVFS + Spatial       |    1 GW |        210 |        790 |    79% |            210 MW
+  DVFS + Spatial       |    5 GW |      1,050 |      3,950 |    79% |          1,050 MW
+  DVFS + Spatial       |   10 GW |      2,100 |      7,900 |    79% |          2,100 MW
+  DVFS + Spatial       |   20 GW |      4,201 |     15,799 |    79% |          4,201 MW
+  Full Stack           |    1 GW |        210 |        790 |    79% |            210 MW
+  Full Stack           |    5 GW |      1,050 |      3,950 |    79% |          1,050 MW
+  Full Stack           |   10 GW |      2,100 |      7,900 |    79% |          2,100 MW
+  Full Stack           |   20 GW |      4,201 |     15,799 |    79% |          4,201 MW
+
+  Reference cases (DVFS+Spatial):
+    1 GW:  firm service = 790 MW, removes 210 MW from Reliability Requirement
+    10 GW: firm service = 7,900 MW, removes 2,100 MW from Reliability Requirement
+  BEFORE any supply-side DR participation.
+
+==========================================================================================
+STORED REFERENCE VARIABLES (1 GW and 10 GW)
+==========================================================================================
+  OPTIMAL_COMMITMENT_FRAC     = 21.0% (DVFS + Spatial)
+  ── 1 GW reference (individual facility scale) ──
+  REF_COMMITTED_MW_1GW        = 210 MW
+  REF_ACCREDITED_MW_1GW       = 193 MW
+  REF_NET_VALUE_1GW           = $21.6M/yr
+  ── 10 GW reference (fleet scale) ──
+  REF_COMMITTED_MW_10GW       = 2,100 MW
+  REF_ACCREDITED_MW_10GW      = 1,932 MW
+  REF_NET_VALUE_10GW          = $215.6M/yr
+  ANNUAL_NET_VALUE_PER_MW     = $102,647/MW-yr (fleet-scale)
+ELECTION-BASED SPATIAL CAPACITY & AVOIDED INSTALLED CAPACITY (v13.1)
+====================================================================================================
+  Cascade product: 0.047
+  Planning reserve margin: 20% (PJM 2027/28 IRM = 120%)
+  E3 CT buildout target: 13 GW
+
+   Fleet |   Gross |  Spatial |  Mode A |    TOTAL |   % of
+    (GW) | Spat MW |  Avoided |   DR MW |  Avoided | E3 13G
+  ────────────────────────────────────────────────────────────────────────────────
+     1 GW |      47 |       56 |     150 |      206 |   1.6%
+     2 GW |      93 |      112 |     301 |      413 |   3.2%
+     5 GW |     234 |      280 |     751 |    1,032 |   7.9%
+    10 GW |     467 |      561 |   1,503 |    2,063 |  15.9%
+    15 GW |     701 |      841 |   2,254 |    3,095 |  23.8%
+    20 GW |     934 |    1,121 |   3,005 |    4,126 |  31.7%
+
+  Mode B (spatial): fleet × 0.047 × 1.20
+  Mode A (local DR): fleet × 0.953 × 0.25 × 0.92
+  Total = Mode B (installed MW) + Mode A (UCAP MW) — conservative sum
+
+  ── Bridge to Pillar 1 (reference cases) ──
+  1 GW (individual facility scale):
+    Accredited MW: 193 MW (= 1 GW × 21% depth × 92% ELCC)
+    Avoided installed: 206 MW (spatial × 1.20 + local DR × ELCC)
+  10 GW (fleet scale):
+    Accredited MW: 1,932 MW (= 10 GW × 21% depth × 92% ELCC)
+    Avoided installed: 2,063 MW (spatial × 1.20 + local DR × ELCC)
+  Accredited MW = market-facing. Avoided installed = planning impact.
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+ANNUAL AVOIDED COST
+────────────────────────────────────────────────────────────────────────────────────────────────────
+
+   Fleet | Spatial Av | Local DR |  Total Av |  Annual Base |  Annual CEJA
+  ──────────────────────────────────────────────────────────────────────────────────────────
+     1 GW |         56 |      150 |       206 | $        37M | $        42M 
+     2 GW |        112 |      301 |       413 | $        74M | $        85M 
+     5 GW |        280 |      751 |     1,032 | $       186M | $       211M 
+    10 GW |        561 |    1,503 |     2,063 | $       371M | $       423M 
+    15 GW |        841 |    2,254 |     3,095 | $       557M | $       634M 
+    20 GW |      1,121 |    3,005 |     4,126 | $       743M | $       846M 
+
+  Base: $180,000/MW-yr | CEJA: $205,000/MW-yr
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+VIRTUAL vs. PHYSICAL INTER-REGIONAL TRANSMISSION
+────────────────────────────────────────────────────────────────────────────────────────────────────
+
+  At 1 GW DC fleet:
+    Virtual transfer capability: 47 MW (0.0 GW)
+    Physical DC ties (existing): 1,300 MW (1.3 GW)
+    Virtual / Physical ratio:    0.0x
+
+  At 5 GW DC fleet:
+    Virtual transfer capability: 234 MW (0.2 GW)
+    Physical DC ties (existing): 1,300 MW (1.3 GW)
+    Virtual / Physical ratio:    0.2x
+
+  At 10 GW DC fleet:
+    Virtual transfer capability: 467 MW (0.5 GW)
+    Physical DC ties (existing): 1,300 MW (1.3 GW)
+    Virtual / Physical ratio:    0.4x
+
+  At 20 GW DC fleet:
+    Virtual transfer capability: 934 MW (0.9 GW)
+    Physical DC ties (existing): 1,300 MW (1.3 GW)
+    Virtual / Physical ratio:    0.7x
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+PER-FACILITY CAPACITY REVENUE
+────────────────────────────────────────────────────────────────────────────────────────────────────
+
+  Events/yr: 16 (empirical from Part 1)
+  Migration cost/event/MW: $332
+
+    Facility | Spatial MW |      Revenue |   Mig Cost |          Net
+  ──────────────────────────────────────────────────────────────────────
+       0.5 GW |         23 | $       2.8M | $     0.1M | $       2.7M
+       1.0 GW |         47 | $       5.7M | $     0.2M | $       5.4M
+       2.0 GW |         93 | $      11.4M | $     0.5M | $      10.9M
+       5.0 GW |        234 | $      28.4M | $     1.2M | $      27.2M
+
+  Note: Revenue is home-market only. Compare to IX queue NPV (Part 5).
+  Capacity revenue is real but queue incentive dominates.
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+PER-FACILITY CAPACITY REVENUE — INFERENCE ROUTING (no checkpoint friction)
+────────────────────────────────────────────────────────────────────────────────────────────────────
+
+  Inference drain time: 12.1s (P99)
+  Per-event cost: $0/MW (no lost compute)
+
+    Facility | Spatial MW |      Revenue |   Mig Cost |          Net |  vs Training
+  ─────────────────────────────────────────────────────────────────────────────────────
+       0.5 GW |         23 | $       2.8M | $     0.0M | $       2.8M | +$      0.1M
+       1.0 GW |         47 | $       5.7M | $     0.0M | $       5.7M | +$      0.2M
+       2.0 GW |         93 | $      11.4M | $     0.0M | $      11.4M | +$      0.5M
+       5.0 GW |        234 | $      28.4M | $     0.0M | $      28.4M | +$      1.2M
+
+  Training migration cost absorbed by checkpoint overhead: $332/event/MW × 16 events/yr
+  Inference routing eliminates this entirely.
+  Note: Does not yet include annual readiness costs (pre-staging, serving stack).
+  Readiness cost would need to exceed the training friction delta to change the comparison.
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+STORED: ELECTION MECHANISM RESULTS (reference cases)
+────────────────────────────────────────────────────────────────────────────────────────────────────
+  ── 1 GW reference ──
+  SPATIAL_AVOIDED_1GW          = 206 MW
+  SPATIAL_ANNUAL_SAVINGS_1GW   = $37.1M/yr
+  SPATIAL_RESIDUAL_FIRM_1GW    = 790 MW
+  ── 10 GW reference ──
+  SPATIAL_AVOIDED_10GW         = 2,063 MW
+  SPATIAL_ANNUAL_SAVINGS_10GW  = $371M/yr
+  SPATIAL_RESIDUAL_FIRM_10GW   = 7,900 MW
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+PER-FACILITY CAPACITY REVENUE — INFERENCE ROUTING (no checkpoint friction)
+────────────────────────────────────────────────────────────────────────────────────────────────────
+
+  Inference drain time: 12.1s (P99)
+  Per-event cost: $0/MW (no lost compute)
+
+    Facility | Spatial MW |      Revenue |   Mig Cost |          Net |  vs Training
+  ─────────────────────────────────────────────────────────────────────────────────────
+       0.5 GW |         23 | $       2.8M | $     0.0M | $       2.8M | +$      0.1M
+       1.0 GW |         47 | $       5.7M | $     0.0M | $       5.7M | +$      0.2M
+       2.0 GW |         93 | $      11.4M | $     0.0M | $      11.4M | +$      0.5M
+       5.0 GW |        234 | $      28.4M | $     0.0M | $      28.4M | +$      1.2M
+
+  Training migration cost absorbed by checkpoint overhead: $332/event/MW × 16 events/yr
+  Inference routing eliminates this entirely.
+  Note: Does not yet include annual readiness costs (pre-staging, serving stack).
+  Readiness cost would need to exceed the training friction delta to change the comparison.
+E3 COUNTERFACTUAL: DC DR AS CAPACITY SUBSTITUTE
+================================================================================
+  DR ELCC: 92% (PJM class rating — exogenous)
+  Commitment depth: 21% (DVFS+Spatial)
+  E3 target: 13 GW new gas CTs @ $180,000/MW-yr
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+REGIME COMPARISON: Committed & Accredited MW by Portfolio
+────────────────────────────────────────────────────────────────────────────────────────────────────
+ DC Load |  Commitment | Committed MW | Accredited MW |  Avoided Cost
+──────────────────────────────────────────────────────────────────────
+     1 GW |   DVFS only |          175 |           161 | $       29.0M
+     1 GW | DVFS+Spatial |          210 |           193 | $       34.8M
+     2 GW |   DVFS only |          350 |           322 | $       58.0M
+     2 GW | DVFS+Spatial |          420 |           386 | $       69.6M
+     6 GW |   DVFS only |        1,050 |           966 | $      173.9M
+     6 GW | DVFS+Spatial |        1,260 |         1,159 | $      208.7M
+    10 GW |   DVFS only |        1,750 |         1,610 | $      289.8M
+    10 GW | DVFS+Spatial |        2,100 |         1,932 | $      347.8M
+    14 GW |   DVFS only |        2,450 |         2,254 | $      405.7M
+    14 GW | DVFS+Spatial |        2,941 |         2,705 | $      486.9M
+
+────────────────────────────────────────────────────────────────────────────────
+BENEFIT-COST ANALYSIS — Reference Cases (1 GW, 10 GW)
+────────────────────────────────────────────────────────────────────────────────
+
+  DVFS Only (25%)
+    Committed: 1,750 MW (18% of 10 GW)
+    Accredited: 1,610 MW (at 92% ELCC)
+    System avoided CT cost: $   289.8M/yr
+    DC operator revenue:    $   208.3M/yr
+    Net system benefit:     $    81.5M/yr
+    Benefit-cost ratio:      1.39x
+
+  DVFS+Spatial (primary)
+    Committed: 2,100 MW (21% of 10 GW)
+    Accredited: 1,932 MW (at 92% ELCC)
+    System avoided CT cost: $   347.8M/yr
+    DC operator revenue:    $   249.9M/yr
+    Net system benefit:     $    97.9M/yr
+    Benefit-cost ratio:      1.39x
+
+────────────────────────────────────────────────────────────────────────────────
+CEJA SENSITIVITY (Illinois clean energy mandate)
+  CEJA sensitivity: assumes Illinois cannot rely on in-state gas CT builds post-2025. Marginal resource = PJM-delivered import capacity at ~$205K/MW-yr. Conservative: does not add clean peaker premium or carbon cost adder.
+
+  DVFS+Spatial under CEJA:
+    Avoided: $  396.1M  |  DC rev: $  249.9M  |  BCR: 1.58x
+
+────────────────────────────────────────────────────────────────────────────────
+STORED: E3 COUNTERFACTUAL RESULTS (reference cases)
+  E3_AVOIDED_COST_1GW  = $34.8M/yr (1 GW ref)
+  E3_AVOIDED_COST_10GW = $347.8M/yr (10 GW ref)
+  E3_BCR (both)        = 1.39x (per-MW, fleet-size independent)
+  E3_BCR_CEJA          = 1.58x
+
+  INTERPRETATION:
+    Spatial doubles commitment depth (18% → 21%),
+    doubling avoided CT build. IX queue acceleration (Part 5)
+    dominates the investment decision; capacity revenue is the
+    compliance hook, not the primary incentive.
+ENERGY ARBITRAGE VALUE ($/MW-year of flexible capacity)
+==========================================================================================
+                      2022    2023     2024     2025 2022-2025 avg
+Curtailment Hours                                                 
+20                  $4,604  $3,004   $2,846   $5,545        $6,180
+50                  $8,942  $4,521   $6,119  $10,517       $12,790
+100                $14,738  $6,498  $10,015  $16,066       $21,218
+200                $24,160  $9,621  $14,821  $23,436       $34,895
+
+Thermodynamic efficiency by curtailment bucket:
+   20h: 97.1% efficiency
+   50h: 97.1% efficiency
+  100h: 97.1% efficiency
+  200h: 97.1% efficiency
+
+2025 DOUBLE-COUNTING ADJUSTMENT:
+  Capacity revenue (BRA 27/28): $   111,969/MW-yr
+  Energy arbitrage (100h):      $    16,066/MW-yr
+  PAH overlap deduction:       -$     9,033/MW-yr
+  Adjusted combined:            $   119,002/MW-yr
+
+
+GROUNDED VALUE STACK ($/MW-yr of flexible capacity)
+Only includes components computed from primary data sources.
+================================================================================
+Component                      | Conservative |      Central |   Optimistic
+--------------------------------------------------------------------------------
+Capacity market                | $    111,969 | $    151,110 | $    177,974
+Energy arbitrage               | $      5,545 | $     16,066 | $     23,436
+PAH overlap adjustment         | -$     4,516 | -$     9,033 | -$    13,549
+--------------------------------------------------------------------------------
+TOTAL (grounded)               | $    112,997 | $    158,143 | $    187,861
+
+Potential additional streams (NOT in headline):
+  Avoided transmission (RTEP) — requires further analysis
+  Congestion relief — requires further analysis
+  Ancillary services — requires further analysis
+THREE-PRONG ENERGY ECONOMICS (2025 Historical)
+Compute: $1,327/MWh | Events: 10/yr | Flex: 25%
+Destination LMP: $169.3/MWh (empirical, capacity-weighted)
+=====================================================================================
+PRONG 1: SPATIAL (Geographic Migration)
+  Gross arbitrage captured:      $       729/MW-yr
+  Destination energy cost:      -$       791/MW-yr
+  Migration friction:           -$       201/MW-yr
+  Net energy value:              $      -263/MW-yr
+  ⚠  CURRENTLY UNECONOMIC on energy alone — capacity market is the driver.
+
+  Per-interconnection breakdown:
+    ERCOT   : dest LMP $182.3/MWh → net $    -324/MW-yr
+    WECC    : dest LMP $112.2/MWh → net $       3/MW-yr
+    MISO    : dest LMP $159.0/MWh → net $    -215/MW-yr
+    NYISO   : dest LMP $193.2/MWh → net $    -375/MW-yr
+-------------------------------------------------------------------------------------
+PRONG 2: TEMPORAL (Software Throttling / DVFS)
+  Gross arbitrage captured:      $     3,901/MW-yr
+  Throughput friction:          -$     2,653/MW-yr
+  Net energy value:              $     1,247/MW-yr
+-------------------------------------------------------------------------------------
+PRONG 3: BTM (Behind-the-Meter Battery)
+  Gross arbitrage captured:      $    15,602/MW-yr
+  BTM CapEx (annualized @10%): -$   150,000/MW-yr
+  Net energy (pre-CapEx):        $    15,602/MW-yr
+  Net energy (post-CapEx):       $  -134,398/MW-yr
+-------------------------------------------------------------------------------------
+
+SUMMARY (Energy Only — excludes capacity):
+  Spatial:   $      -263/MW-yr  ❌ Uneconomic
+  Temporal:  $     1,247/MW-yr  ✓
+  BTM:       $    15,602/MW-yr  ✓ (requires $1,500,000 CapEx)
+
+Capacity revenue adds $111,969/MW-yr across all prongs.
+Spatial migration is justified by capacity market depth, not energy arbitrage.
+
+─────────────────────────────────────────────────────────────────────────────────────
+INFERENCE ROUTING VARIANT (no checkpoint friction)
+─────────────────────────────────────────────────────────────────────────────────────
+  Gross arbitrage captured:      $       729/MW-yr  (same)
+  Destination energy cost:      -$       791/MW-yr  (same)
+  Migration friction:           -$         0/MW-yr  (no checkpoint)
+  Net energy value:              $       -62/MW-yr
+  → Still uneconomic even without friction (destination cost exceeds spread).
+
+  Delta vs training: +$201/MW-yr (= eliminated friction of $201/MW-yr)
+NOTE: This projection applies to TRAINING migration.
+For INFERENCE routing, per-event friction is ~$0 (no checkpoint).
+Inference routing net energy value: $-62/MW-yr
+Status: ❌ Uneconomic
+
+SPATIAL BREAK-EVEN: FORWARD PROJECTION
+==========================================================================================
+Current state (2025):
+  Checkpoint latency:    15 min
+  Crisis LMP (top 100h): $202/MWh
+  Destination LMP:       $169/MWh
+  Spatial net value:     $-263/MW-yr (uneconomic)
+
+CROSSING POINTS (year spatial becomes economic on energy):
+------------------------------------------------------------
+    Conservative: 2034 (latency=3.5 min, spread=$172/MWh)
+         Central: 2031 (latency=3.9 min, spread=$171/MWh)
+      Aggressive: 2030 (latency=3.6 min, spread=$203/MWh)
+
+CENTRAL SCENARIO TRAJECTORY:
+  Year |    Latency |     Spread |    Net Value | Status
+-----------------------------------------------------------------
+  2025 |     15.0 min | $      33 | $      -844 | ❌ Uneconomic
+  2026 |     12.0 min | $      52 | $      -699 | ❌ Uneconomic
+  2027 |      9.6 min | $      73 | $      -557 | ❌ Uneconomic
+  2028 |      7.7 min | $      95 | $      -416 | ❌ Uneconomic
+  2029 |      6.1 min | $     119 | $      -273 | ❌ Uneconomic
+  2030 |      4.9 min | $     144 | $      -128 | ❌ Uneconomic
+  2031 |      3.9 min | $     171 | $        21 | ✓ Economic
+  2032 |      3.1 min | $     199 | $       176 | ✓ Economic
+  2033 |      2.5 min | $     230 | $       337 | ✓ Economic
+  2034 |      2.0 min | $     263 | $       506 | ✓ Economic
+  2035 |      1.6 min | $     298 | $       684 | ✓ Economic
+
+WORKLOAD-SPECIFIC BREAK-EVEN (current state):
+  LLM Training (batch)      lat=15min  net=$    -263/MW-yr  ❌  (Large checkpoints, highly deferrable)
+  LLM Inference (batch)     lat= 2min  net=$     -89/MW-yr  ❌  (Tiny state, high SLA sensitivity)
+  Scientific HPC            lat= 5min  net=$    -129/MW-yr  ❌  (Moderate checkpoints, flexible scheduling)
+  Rendering/Media           lat= 1min  net=$     -75/MW-yr  ❌  (Minimal state, embarrassingly parallel)
+PORTFOLIO INTERACTION EFFECTS
+=====================================================================================
+
+1. INDIVIDUAL PRONG ECONOMICS (Energy + Capacity):
+  SPATIAL   : Energy $    -263 + Cap $ 111,969 = $ 111,706/MW-yr  (CapEx: $         0)
+  TEMPORAL  : Energy $   1,247 + Cap $ 111,969 = $ 113,217/MW-yr  (CapEx: $         0)
+  BTM       : Energy $  15,602 + Cap $ 111,969 = $ -22,428/MW-yr  (CapEx: $ 1,500,000)
+
+2. COMBINED PORTFOLIO EFFECTS:
+  Duration extension (avoid 8hr battery): $   100,000/MW-yr
+  Battery sizing reduction:                $    20,852/MW-yr
+  ELCC stacking bonus:                     $     5,598/MW-yr
+  Total interaction premium:               $   126,451/MW-yr
+
+3. SUM OF PARTS vs PORTFOLIO:
+  Best individual prong:     $   113,217/MW-yr
+  Grounded value (cap+eng):  $   158,143/MW-yr
+  Portfolio with interaction: $   284,594/MW-yr
+  Interaction premium:       $   126,451/MW-yr (80.0% of base)
+
+4. CAPEX SUBSTITUTION FRONTIER:
+  Software Flex |  Battery Needed |  Total CapEx |  Savings vs Full BTM
+---------------------------------------------------------------------------
+            0% |           100% | $1,500,000.0 | $               0.0
+           10% |            85% | $1,275,000.0 | $         225,000.0
+           25% |            62% | $ 937,500.0 | $         562,500.0
+           40% |            40% | $599,999.9999999999 | $900,000.0000000001
+           55% |            17% | $262,499.9999999999 | $       1,237,500.0
+IX QUEUE NPV — BEHAVIORAL INCENTIVE QUANTIFICATION
+======================================================================
+Reference facility: 1 GW grid-connected
+GPU density: 603 GPUs/MW (grid-metered, PUE=1.3)
+H100 spot rate: $2.2/hr
+Utilization: 80%
+Annual gross compute revenue: $9.30B/yr
+
+PJM baseline queue [LBNL-2024]:
+  Median IR→COD: 5.8 years
+  P75 IR→COD:    7.0 years
+
+WACC: 10% (hyperscaler range 8-12%)
+
+──────────────────────────────────────────────────────────────────────
+NPV OF IX QUEUE ACCELERATION (1 GW facility)
+──────────────────────────────────────────────────────────────────────
+      Scenario | Accel (yrs) | Annuity Factor |  NPV (gross) | vs Ann Cap Rev
+----------------------------------------------------------------------
+  Conservative |           2 |          1.736 | $      16.1B |          576×
+       Central |           3 |          2.487 | $      23.1B |          826×
+    Optimistic |           4 |          3.170 | $      29.5B |         1053×
+
+──────────────────────────────────────────────────────────────────────
+DOMINANCE ANALYSIS
+──────────────────────────────────────────────────────────────────────
+Central scenario (3yr acceleration, 1 GW):
+  Gross IX NPV:               $23.1B
+  DVFS+Spatial vs DVFS-only cap differential: $3.9M/yr
+  Cap differential NPV (3yr):  $10M
+
+  IX NPV exceeds cap differential at EBITDA margin > 0.04%
+  Typical hyperscaler cloud EBITDA: 35-45%
+  → IX incentive dominates at any plausible margin
+
+──────────────────────────────────────────────────────────────────────
+MECHANISM DESIGN IMPLICATION
+──────────────────────────────────────────────────────────────────────
+  Capacity revenue differential (DVFS+Spatial vs DVFS-only):
+    $23.5M/yr (21% depth) vs $19.6M/yr (18% depth)
+    = $3.9M/yr incremental — the STATED instrument
+
+  IX queue NPV (central, gross): $23.1B — the ACTUAL incentive
+  Ratio: 5893× annual differential
+
+  IRP design implication:
+    Regulators do not need large capacity price differentials.
+    A credible FIA preference rule — tied to demonstrated spatial
+    flexibility — creates dominant incentive to invest, because
+    hyperscalers optimize on time-to-revenue, not $/MW-yr.
+    Capacity market is the compliance hook; IX speed is the payoff.
+FORWARD ENERGY ARBITRAGE — MONTE CARLO (Supply-Gap Model)
+Base: CT builds feasible (0.8-2.2 GW/yr) | CEJA: constrained (0-0.3 GW/yr)
+2025 baseline (100h): $16,066/MW-yr
+======================================================================
+
+BASE CASE (CT builds feasible):
+  Year |        P25 |     Median |        P75 | Avg Gap GW
+-------------------------------------------------------
+  2026 | $   10,578 | $   10,725 | $   10,851 |       0.0 GW
+  2028 | $   11,173 | $   11,658 | $   12,194 |       0.5 GW
+  2030 | $   16,848 | $   18,913 | $   20,878 |       3.9 GW
+  2032 | $   18,057 | $   20,235 | $   23,541 |       4.7 GW
+  2035 | $   12,940 | $   16,361 | $   19,299 |       2.4 GW
+
+CEJA SENSITIVITY (CT builds constrained):
+  Year |        P25 |     Median |        P75 | Avg Gap GW
+-------------------------------------------------------
+  2026 | $   10,578 | $   10,725 | $   10,851 |       0.0 GW
+  2028 | $   11,173 | $   11,658 | $   12,194 |       0.5 GW
+  2030 | $   16,848 | $   18,913 | $   20,878 |       3.9 GW
+  2032 | $   19,137 | $   21,806 | $   24,371 |       5.2 GW
+  2035 | $   20,295 | $   23,610 | $   26,316 |       5.9 GW
+
+COMPARISON — 100h median:
+    Year |         Base |         CEJA |   CEJA premium
+  --------------------------------------------------
+    2025 | $     16,066 | $     16,066 |     (baseline)
+    2026 | $     10,725 | $     10,725 | +$           0
+    2028 | $     11,658 | $     11,658 | +$           0
+    2030 | $     18,913 | $     18,913 | +$           0
+    2032 | $     20,235 | $     21,806 | +$       1,571
+    2035 | $     16,361 | $     23,610 | +$       7,250
+
+CEJA: constrained CT builds → longer supply gap → higher scarcity premiums.
+Base case is the conservative floor. CEJA reflects IL-specific policy reality.
+╔════════════════════════════════════════════════════════════════════════════════════════╗
+║                     CONSOLIDATED RESULTS — BARTLETT FELLOWSHIP v15                     ║
+╚════════════════════════════════════════════════════════════════════════════════════════╝
+
+TABLE 1: Historical Value Stack (2025, $/MW-yr of flexible capacity)
+----------------------------------------------------------------------
+  Capacity (BRA 27/28 × ELCC):  $   111,969
+  Energy arbitrage (100h):        $    16,066
+  PAH overlap adjustment:        -$     9,033
+  TOTAL:                          $   119,002
+  Source: Part 4, Cell 4-1
+
+TABLE 2: Mechanism Energy Profiles ($/MW-yr, energy only)
+----------------------------------------------------------------------
+  Spatial (geographic migration):  $      -263  ⚠ Uneconomic today
+  Temporal (software throttling):   $     1,247
+  BTM (battery + controls):         $    15,602  (pre-CapEx)
+  Source: Part 4, Cell 4-2
+
+TABLE 3: E3 Counterfactual — DC DR as CT Substitute (10 GW)
+----------------------------------------------------------------------
+  ELCC: 92% (PJM class rating — exogenous)
+  E3 target: 13 GW new gas CTs @ $180,000/MW-yr
+
+  Commitment                |  Depth |  Committed | Accredited |  Avoided Cost |   BCR
+  --------------------------------------------------------------------------------
+  DVFS Only                 |   18% |      1,750 |      1,610 | $      289.8M | 1.39x
+  DVFS + Spatial            |   21% |      2,100 |      1,932 | $      347.8M | 1.39x
+  CEJA sensitivity (DVFS+Spatial): BCR = 1.58x
+  Source: Part 3, Cell 3-4
+
+TABLE 4: Spatial Shifting — Projected Economics (Central)
+----------------------------------------------------------------------
+  2025: lat= 15.0min  spread=$    33  net=$    -844/MW-yr  ❌
+  2027: lat=  9.6min  spread=$    73  net=$    -557/MW-yr  ❌
+  2029: lat=  6.1min  spread=$   119  net=$    -273/MW-yr  ❌
+  2031: lat=  3.9min  spread=$   171  net=$      21/MW-yr  ✓
+  2033: lat=  2.5min  spread=$   230  net=$     337/MW-yr  ✓
+  2035: lat=  1.6min  spread=$   298  net=$     684/MW-yr  ✓
+  Source: Part 4, Cell 4-3
+
+TABLE 5: Portfolio Interaction Value
+----------------------------------------------------------------------
+  Duration extension savings:   $   100,000/MW-yr
+  Battery sizing reduction:      $    20,852/MW-yr
+  ELCC stacking bonus:           $     5,598/MW-yr
+  Total interaction premium:     $   126,451/MW-yr
+  Source: Part 4, Cell 4-4
+
+TABLE 6: Forward Energy Arbitrage — MC Projection (100h, median)
+----------------------------------------------------------------------
+    Year |        P25 |     Median |        P75 | Avg Gap GW
+  -------------------------------------------------------
+    2025 |     (hist) | $   16,066 |     (hist) |        ---
+    2026 | $   10,578 | $   10,725 | $   10,851 |       0.0 GW
+    2028 | $   11,173 | $   11,658 | $   12,194 |       0.5 GW
+    2030 | $   16,848 | $   18,913 | $   20,878 |       3.9 GW
+    2032 | $   18,057 | $   20,235 | $   23,541 |       4.7 GW
+    2035 | $   12,940 | $   16,361 | $   19,299 |       2.4 GW
+  Source: Part 5, Cell 5-2
+
+TABLE 7: Connect-and-Manage — Firm Service Level
+----------------------------------------------------------------------
+  DVFS Only           : commit 18% → firm service = 82% of nameplate
+  DVFS + Spatial      : commit 21% → firm service = 79% of nameplate
+  Reference cases (DVFS+Spatial):
+    1 GW:  removes 210 MW from Reliability Requirement
+    10 GW: removes 2,100 MW from Reliability Requirement
+  Source: Part 3, Cell 3-2
+
+======================================================================
+KEY FINDINGS (v17 per-GW framing):
+  Cascade product (central):    0.0467 (10-param, inference-dominant)
+  Commitment depth:             21% (DVFS+Spatial) vs 18% (DVFS only)
+  Spatial uplift:               1.2x more accredited capacity
+  ── 1 GW reference (individual facility scale) ──
+  Accredited MW (1 GW):         193 MW
+  Net value (1 GW):            $21.6M/yr
+  Avoided CT cost (1 GW):      $34.8M/yr
+  ── 10 GW reference (fleet scale) ──
+  Accredited MW (10 GW):        1,932 MW
+  Net value (10 GW):           $215.6M/yr
+  Avoided CT cost (10 GW):     $347.8M/yr
+  ──
+  Grounded value stack:        $158,143/MW-yr (cap + energy)
+  Spatial break-even:           2028 (central), 2030 (conservative)
+  IX queue NPV (1 GW, 3yr):   $23.1B — dominates cap revenue
+  NOTE: Commitment depth varies with fleet size due to destination
+        contention. See conditional MC per-GW sweep for full curve.
+
+v16 VALIDATION CHECKS
+────────────────────────────────────────────────────────────
+  ✓ Cascade product ≈ 0.0467 (v17 10-parameter) (actual: 0.0467)
+  ✓ Commitment depth ≈ 21.0% (v17: DVFS on shiftable residual, 10-param cascade) (actual: 0.2100)
+  ✓ OPTIMAL_COMMITMENT_FRAC matches COMMITMENT_DEPTH (opt=0.2100, depth=0.2100)
+  ✓ CASCADE_D2 = 0.33 (v17: utilization headroom) (actual: 0.33)
+  ✓ CASCADE_D3 = 0.88 (v17: HW compat without pre-staging) (actual: 0.88)
+  ✓ CASCADE_D4 = 0.50 (v17: inference workload share) (actual: 0.5)
+  ✓ CASCADE_D5 = 0.65 (v17: pre-staging readiness) (actual: 0.65)
+  ✓ CASCADE_D1 = 0.99 (actual: 0.99)
+  ✓ TCF not defined (retired in v12)
+  ✓ SPATIAL_INTRA_RTO_DEPTH not defined (retired)
+  ✓ SPATIAL_T3_CROSS_IX_DEPTH not defined (retired)
+  ✓ WIRED_ELCC_T1 not defined (tiered ELCC retired)
+  ✓ Accredited MW (10GW ref) in [1500, 2500] (v17 range) (actual: 1,932)
+  ✓ Net value (10GW ref) is positive (actual: $215.6M)
+  ✓ Accredited MW (1GW ref) in [150, 250] (v17 range) (actual: 193)
+  ✓ Net value (1GW ref) is positive (actual: $21.6M)
+  ✓ Net/MW identical at 1 GW and 10 GW (linear cascade model) (1GW: $102,647, 10GW: $102,647)
+  ✓ DR_ELCC = 0.92 (PJM class rating) (actual: 0.92)
+  ✓ Election results computed for 10 GW ref
+  ✓ Election results computed for 1 GW ref
+  ✓ No 'deliverable_spatial' key (TCF step removed) (keys: ['gross_spatial', 'spatial_avoided', 'non_migrating_mw', 'dvfs_commitment', 'local_dr_accredited']...)
+  ✓ Total avoided (10GW ref) in [1000, 4000] (v17 range) (actual: 2,063)
+  ✓ Total avoided (1GW ref) in [100, 400] (v17 range) (actual: 206)
+  ✓ PRM derived from RESERVE_MARGIN_TARGET (not hardcoded) (PRM=0.20, IRM=1.20)
+  ✓ Cascade matches v17 target (0.0467) (notebook: 0.0467)
+  ✓ Commitment depth matches v17 target (0.21) (notebook: 0.2100)
+  ✓ v4 empirical data loaded (not fallback) (DESTINATION_LMP_CRISIS = $169.3)
+  ✓ No NameError from retired params (all cells executed)
+
+  28/28 checks passed
+  ✓ All v13.1 validation checks passed
+Exported to output/:
+  commitment_optimization.csv
+  election_mechanism.csv
+  energy_arbitrage_by_year.csv
+  forward_arbitrage_mc.csv
+  oscillation_comparison.png
+  rebound_analysis.png
+  spatial_shifting_trajectory.csv
+Migration roles: ['source', 'intra_rto_control', 'cross_ba_destination']
+Destination zones: []
+All zones in hourly: ['PJM_COMED', 'PJM_DOM', 'PJM_AEP', 'PJM_BGE', 'PJM_PECO', 'PJM_PSEG', 'PJM_PEPCO', 'ERCOT_LZ_NORTH', 'ERCOT_LZ_SOUTH', 'ERCOT_LZ_WEST']
+CONTINUOUS INFERENCE ROUTING ARBITRAGE
+=====================================================================================
+Source: PJM_COMED
+Destinations: 19 zones
+Routable fraction: 56.0% (S1 x S2a = 0.7 x 0.8)
+Per-event routing cost: $0 (inference)
+
+  Year |  Hours |   Avg Spread |  Pos Hours |   Gross $/MW |  Routed $/MW
+---------------------------------------------------------------------------
+  2022 |  8,760 | $      27.3/MWh |      8,444 | $   240,825 | $   134,862
+  2023 |  8,760 | $      11.0/MWh |      7,665 | $    99,755 | $    55,863
+  2024 |  8,784 | $      14.2/MWh |      7,231 | $   130,412 | $    73,031
+  2025 |  8,760 | $      19.1/MWh |      7,319 | $   174,829 | $    97,904
+
+   Avg |        |              |            | $   161,455 | $    90,415
+
+  Routed value = gross x 56.0% routable fraction
+  No friction subtracted (inference routing cost = $0)
+
+  CONTEXT:
+    Continuous routing energy value:  $    90,415/MW-yr
+    Capacity revenue (BRA 27/28):     $   111,969/MW-yr
+    Ratio:                            1:1 capacity vs energy
+
+  CHEAPEST DESTINATION FREQUENCY (all hours):
+    MISO_MINNESOTA            (MISO    ): 6,141 hours ( 17.5%)
+    CAISO_SP15                (CAISO   ): 5,277 hours ( 15.0%)
+    ERCOT_LZ_NORTH            (ERCOT   ): 4,686 hours ( 13.4%)
+    ERCOT_LZ_WEST             (ERCOT   ): 4,318 hours ( 12.3%)
+    NYISO_ZONE_A              (NYISO   ): 3,926 hours ( 11.2%)
+    ERCOT_LZ_SOUTH            (ERCOT   ): 3,418 hours (  9.7%)
+    MISO_ARKANSAS             (MISO    ): 3,058 hours (  8.7%)
+    MISO_ILLINOIS             (MISO    ): 1,597 hours (  4.6%)
+    ERCOT_LZ_HOUSTON          (ERCOT   ):   930 hours (  2.7%)
+    MISO_MS                   (MISO    ):   852 hours (  2.4%)
+['CASCADE_D1', 'CASCADE_D2', 'CASCADE_D3', 'CASCADE_D4', 'CASCADE_D5', 'CASCADE_E1', 'CASCADE_E2', 'CASCADE_ETA_SQ', 'CASCADE_MC_COMMITMENT', 'CASCADE_MC_PRODUCTS', 'CASCADE_RANGES', 'CASCADE_S1', 'CASCADE_S2a', 'CASCADE_S2b', 'CASCADE_SCENARIOS']
+ELASTICITY SENSITIVITY: ROUTING VALUE BY FLEET SIZE
+==========================================================================================
+Baseline (price-taker): $90,415/MW-yr
+
+   Elast |   0.5 GW |   1.0 GW |   2.0 GW |   5.0 GW |  10.0 GW |
+-------------------------------------------------------
+$    1/GW |    97%  |    95%  |    90%  |    76%  |    57%  |
+$    2/GW |    95%  |    90%  |    80%  |    57%  |    32%  |
+$    5/GW |    87%  |    76%  |    57%  |    24%  |     7%  |
+$   10/GW |    76%  |    57%  |    32%  |     7%  |     2%  |
+$   20/GW |    57%  |    32%  |    11%  |     2%  |     0%  |
+$   50/GW |    24%  |     7%  |     2%  |     0%  |     0%  |
+$  100/GW |     7%  |     2%  |     0%  |     0%  |     0%  |
+$  150/GW |     3%  |     1%  |     0%  |     0%  |     0%  |
+$  200/GW |     2%  |     0%  |     0%  |     0%  |     0%  |
+$  300/GW |     1%  |     0%  |     0%  |     0%  |     0%  |
+$  500/GW |     0%  |     0%  |     0%  |     0%  |     0%  |
+
+BREAKPOINT ANALYSIS: Elasticity needed for X% degradation
+----------------------------------------------------------------------
+   Fleet |   25% degrad |   50% degrad |   75% degrad |  100% degrad
+----------------------------------------------------------------------
+   0.5 GW | $       10/GW | $       25/GW | $       49/GW | $      840/GW
+   1.0 GW | $        5/GW | $       12/GW | $       25/GW | $      420/GW
+   2.0 GW | $        3/GW | $        6/GW | $       12/GW | $      210/GW
+   5.0 GW | $        1/GW | $        2/GW | $        5/GW | $       84/GW
+  10.0 GW | $        1/GW | $        1/GW | $        2/GW | $       42/GW
+
+REFERENCE ELASTICITIES:
+  Off-peak supply curve slope:     ~$2-10/MWh per GW  (flat, baseload margin)
+  Shoulder supply curve slope:     ~$10-30/MWh per GW (gas units dispatching)
+  Peak supply curve slope:         ~$30-80/MWh per GW (peakers, steep)
+  Scarcity / hockey stick:         ~$100-500/MWh per GW (offer cap region)
+  Synapse AESC DRIPE (annual avg): $150/MWh per GW
+
+  Hours by price regime (ComEd 2022-2025):
+    Off-peak (<$30):    17,401 hours ( 49.6%)
+    Shoulder ($30-60):  12,981 hours ( 37.0%)
+    Peak ($60-150):      4,384 hours ( 12.5%)
+    Scarcity (>$150):      294 hours (  0.8%)
+
+  Most routing value comes from off-peak and shoulder hours (high volume,
+  low elasticity). Scarcity hours have high elasticity but few hours.
+  The effective average elasticity is dominated by the low-price hours
+  where the supply curve is flattest.

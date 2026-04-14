@@ -1,0 +1,128 @@
+======================================================================
+BurstGPT Cross-Validation of DynamoLLM Findings
+Bartlett Fellowship / Nature Energy Submission
+======================================================================
+Loading BurstGPT data...
+  Already exists: BurstGPT_1.csv
+  Loaded BurstGPT_1: 1,429,737 rows
+  Already exists: BurstGPT_2.csv
+  Loaded BurstGPT_2: 3,858,436 rows
+  Total: 5,288,173 rows
+  Columns mapped: ['timestamp', 'model', 'request_tokens', 'response_tokens', 'total_tokens', 'log_type']
+
+======================================================================
+ANALYSIS 1: DRAIN TIME VALIDATION
+======================================================================
+
+  Method A: Token-based drain time at 60 tok/s
+  (Response tokens / 60, same method as DynamoLLM)
+  N = 5,188,507 requests
+    Percentile   BurstGPT (s)  DynamoLLM (s)
+  ------------------------------------------
+  P50                   0.12s
+  P90                   2.48s
+  P95                   4.18s
+  P99                  12.12s  (Coding: 4.5, Conv: 11.6)
+  P99.9                35.48s
+
+  By service type:
+    Conversation log: P50=3.58s, P99=16.93s, N=225,152
+    API log: P50=0.12s, P99=10.23s, N=4,963,355
+
+  By model:
+    ChatGPT: P50=0.12s, P99=8.22s, N=4,886,031
+    GPT-4: P50=1.98s, P99=21.98s, N=302,476
+
+  Response token distribution:
+    Mean:   60.1
+    Median: 7.0
+    P90:    149.0
+    P99:    727.0
+    Max:    12472
+
+======================================================================
+ANALYSIS 2: DIURNAL AND WEEKLY PATTERNS
+======================================================================
+
+  Hourly request volume (all types combined):
+    Peak hour:        33,344 requests
+    Valley hour:      1 requests
+    Average hour:     1,920 requests
+    Peak/Valley:      33344.0x
+    Peak/Average:     17.4x
+    DynamoLLM Coding: 34.6x peak/valley, 2.8x peak/avg
+    DynamoLLM Conv:   3.3x peak/valley, 1.7x peak/avg
+
+  By service type:
+    Conversation log: peak/valley=446.0x, peak/avg=5.1x
+    API log: peak/valley=33236.0x, peak/avg=10.9x
+
+  Weekend reduction:
+    Weekday avg daily volume: 43,155
+    Weekend avg daily volume: 45,108
+    Weekend reduction:        -4.5%
+C:\Users\dunla\OneDrive\Documents\Bartlett Fellowship\For Nature Energy\burstgpt_validation.py:330: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  hourly_by_hour = df.groupby(df["hour"]).apply(
+
+  Hourly coefficient of variation (load predictability):
+    Range: 1.49 - 2.54
+    Mean:  1.79
+
+  Average requests by hour of day:
+    00:00     1,733  █████████████████████
+    01:00     1,277  ███████████████
+    02:00     1,384  ████████████████
+    03:00     1,663  ████████████████████
+    04:00     1,296  ███████████████
+    05:00       987  ████████████
+    06:00     1,086  █████████████
+    07:00     1,001  ████████████
+    08:00       993  ████████████
+    09:00     1,140  █████████████
+    10:00     1,754  █████████████████████
+    11:00     2,192  ██████████████████████████
+    12:00     2,248  ███████████████████████████
+    13:00     2,315  ████████████████████████████
+    14:00     2,405  █████████████████████████████
+    15:00     2,410  █████████████████████████████
+    16:00     2,457  ██████████████████████████████
+    17:00     2,339  ████████████████████████████
+    18:00     2,290  ███████████████████████████
+    19:00     2,346  ████████████████████████████
+    20:00     2,139  ██████████████████████████
+    21:00     2,318  ████████████████████████████
+    22:00     2,116  █████████████████████████
+    23:00     1,815  ██████████████████████
+
+======================================================================
+CROSS-VALIDATION SUMMARY: BurstGPT vs DynamoLLM
+======================================================================
+
+  Characteristic                      DynamoLLM              BurstGPT
+  -------------------------------------------------------------------------------
+  Total requests                      44.1M                  5.3M
+  Duration                            7 days                 121 days
+  Date range                          May 10-18, 2024        2024-01-01 to 2024-04-30
+  Source                              Azure internal prod    Azure OpenAI regional
+  Service types                       Coding, Conversation   Conversation log, API log
+
+  Metric                              DynamoLLM              BurstGPT               Consistent?
+  ------------------------------------------------------------------------------------------
+  P99 drain time (60 tok/s)           4.5-11.6s              12.1s                  YES
+  Peak/valley ratio                   3.3-34.6x              33344.0x
+  Weekend reduction                   43-68%                 -5%
+  Hourly CoV range                    0.28-0.85              1.49-2.54
+
+  INTERPRETATION FOR PAPER:
+  If BurstGPT P99 drain time falls within the DynamoLLM range (4.5-11.6s),
+  diurnal patterns show similar periodicity, and weekend reduction is
+  in the same ballpark, then the S2b parameter grounding is validated
+  across two independent datasets spanning 121+ days.
+  This substantially strengthens the claim that inference workloads
+  complete fast enough for DR dispatch timelines (10-30 min notice).
+
+  Figure saved: burstgpt_figures\burstgpt_cross_validation.png
+
+======================================================================
+DONE. Review results above for Nature Energy Methods section.
+======================================================================
