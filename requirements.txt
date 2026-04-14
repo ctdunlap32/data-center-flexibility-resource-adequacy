@@ -1,12 +1,8 @@
-Based on imports across all four current source files, pinned to versions current in your environment (verify with `pip freeze | grep -E "..."` after you've got a working env):
-```
 pandas>=2.0,<3.0
 numpy>=1.24,<2.0
 matplotlib>=3.7,<4.0
 scipy>=1.11,<2.0
-pyarrow>=14.0,<16.0       # for parquet read/write
+pyarrow>=14.0,<16.0
 jupyter>=1.0
 notebook>=7.0
 ipykernel>=6.25
-```
-Pin exact versions after you've run the notebooks once in a fresh environment. Use `pip freeze > requirements.txt` to capture the working set, then review and trim anything unnecessary. Anchoring to exact versions is what makes the repo runnable in 2027 when someone comes back to verify.
