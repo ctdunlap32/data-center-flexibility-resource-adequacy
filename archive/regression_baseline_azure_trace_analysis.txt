@@ -1,0 +1,46 @@
+Setup complete.
+12. Summary: Extracted Parameters for P1 Bounded Derivation
+All numbers derived from 44M production Azure LLM inference requests (May 2024).
+
+print('=' * 70)
+======================================================================
+PARAMETER EXTRACTION SUMMARY
+Azure LLM Inference Traces (Stojkovic et al., HPCA 2025)
+44.1M requests, two production services, May 10-18 2024
+======================================================================
+
+--- Coding ---
+  Hourly request CoV:           0.848
+  Hourly token CoV:             0.883
+  24h autocorrelation (req):    0.7545
+  24h autocorrelation (tok):    0.7415
+  Weekday PTTR (mean):          10.0:1
+  Weekend load reduction:       68.1%
+  Median headroom (vs peak):    79.8%
+  P99 drain time (@60 tok/s):  4.5s
+
+--- Conversation ---
+  Hourly request CoV:           0.291
+  Hourly token CoV:             0.284
+  24h autocorrelation (req):    0.3995
+  24h autocorrelation (tok):    0.3607
+  Weekday PTTR (mean):          2.0:1
+  Weekend load reduction:       43.2%
+  Median headroom (vs peak):    38.2%
+  P99 drain time (@60 tok/s):  11.6s
+
+======================================================================
+CITABLE PARAMETER TABLE
+======================================================================
+
+Figures saved to: C:\Users\dunla\OneDrive\Documents\Bartlett Fellowship\Thesis\Code\Analysis\figures_azure_trace/
+  autocorrelation.png
+  diurnal_profile.png
+  diurnal_timeseries.png
+  drain_simulation.png
+  headroom_cdf.png
+  interarrival_times.png
+  request_duration_cdf.png
+  request_vs_token_weighted.png
+  token_distributions.png
+
