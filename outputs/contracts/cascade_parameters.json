@@ -1,0 +1,116 @@
+{
+  "version": "1.0",
+  "produced_by": "notebook 02 \u2014 cascade_simulation",
+  "parameters": {
+    "S1": {
+      "central": 0.7,
+      "range": [
+        0.7,
+        0.7,
+        0.7
+      ],
+      "grounding": "STRUCTURAL"
+    },
+    "S2": {
+      "central": 0.7,
+      "range": [
+        0.6,
+        0.7,
+        0.95
+      ],
+      "grounding": "ESTIMATED-WEAK"
+    },
+    "S3": {
+      "central": 0.9,
+      "range": [
+        0.85,
+        0.9,
+        0.95
+      ],
+      "grounding": "DATA"
+    },
+    "D1": {
+      "central": 0.99,
+      "range": [
+        0.945,
+        0.99,
+        0.995
+      ],
+      "grounding": "DATA"
+    },
+    "D2": {
+      "central": 0.33,
+      "range": [
+        0.2,
+        0.33,
+        0.5
+      ],
+      "grounding": "ESTIMATED-WEAK"
+    },
+    "D3": {
+      "central": 0.88,
+      "range": [
+        0.8,
+        0.88,
+        0.92
+      ],
+      "grounding": "ESTIMATED-MODERATE"
+    },
+    "D4": {
+      "central": 0.5,
+      "range": [
+        0.33,
+        0.5,
+        0.67
+      ],
+      "grounding": "ESTIMATED-MODERATE"
+    },
+    "D5": {
+      "central": 0.65,
+      "range": [
+        0.5,
+        0.65,
+        0.8
+      ],
+      "grounding": "ESTIMATED-WEAK"
+    },
+    "E1": {
+      "central": 0.95,
+      "range": [
+        0.9,
+        0.95,
+        0.99
+      ],
+      "grounding": "ESTIMATED"
+    },
+    "E2": {
+      "central": 0.98,
+      "range": [
+        0.95,
+        0.98,
+        0.995
+      ],
+      "grounding": "DATA"
+    }
+  },
+  "cascade_product": {
+    "conservative": 0.00761500278,
+    "central": 0.038362194070199994,
+    "optimistic": 0.15266842599393002
+  },
+  "commitment_depth_baseline": 0.20377164555264998,
+  "dvfs_floor_facility": 0.175,
+  "flex_frac": 0.25,
+  "variance_decomposition_eta_squared": {
+    "S2": 0.1197280479561233,
+    "S3": 0.008326897065612652,
+    "D1": 0.0011763971884695872,
+    "D2": 0.4205065510093766,
+    "D3": 0.009616731708940509,
+    "D4": 0.2668082110098458,
+    "D5": 0.1238311144022471,
+    "E1": 0.005204963490670937,
+    "E2": 0.0017297924519660657
+  },
+  "notes": "Ten-parameter cascade from NE paper \u00a72. DVFS applied to S1 envelope only (Colangelo et al. 2025)."
+}
