@@ -122,3 +122,25 @@ Scheduled for Phase 5 Step 5.3 per migration guide. Pillar1 is currently inconsi
 - Commit and push after each meaningful milestone — don't leave uncommitted work overnight
 - `git` may not be in the Anaconda Prompt PATH; if `git` commands fail with "not recognized," use a regular Command Prompt or add git to the PATH
 - Reviewer reproducibility depends on contract files in `outputs/contracts/` being correct and consistent with their schemas
+
+
+
+
+## DO NOT REMOVE THIS PART HERE AND BELOW
+### S1 treatment — likely pre-submission revision
+
+Current state: S1 = 0.70 held fixed, no distribution, no explicit justification in paper.
+Arguments surfaced for why this is defensible today:
+1. S1 is a scope definer (paper scoped to inference-dominant facilities, abstract + §2)
+2. Composition uncertainty within the scope is definitional to the scope
+3. If we wanted within-scope S1 variance, we'd need to redo Pillar1's multi-archetype framework (which paper currently drops)
+
+Items to address before Rosner:
+- [ ] Methods ¶41 reword: "draws all ten parameters" is technically wrong since S1 is fixed.
+      Correct version: "draws the nine stochastic parameters independently from their
+      specified distributions; S1 is held fixed at the scenario-defining value of 0.70."
+- [ ] Methods ¶40 or ¶41 add one sentence defending fixed-S1 treatment explicitly.
+      Reviewer will ask otherwise.
+- [ ] Consider whether to bring back a comparison across archetypes (inference-dominant
+      vs. training-heavy vs. mixed) either in Extended Data or as a pre-submission robustness
+      check. This would make the fixed-S1 treatment more defensible but adds scope.
