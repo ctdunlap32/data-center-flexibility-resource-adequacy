@@ -9,20 +9,20 @@
       2024,
       2025
     ],
-    "n_destination_zones": 19,
-    "total_destination_mw": 19039.4,
+    "n_destination_zones": 17,
+    "total_destination_mw": 17200.4,
     "produced_by": "notebook 01 \u2014 empirical_evidence"
   },
   "headline": {
-    "capacity_weighted_overlap_pct": 27.157980293496642,
+    "capacity_weighted_overlap_pct": 21.58280912071812,
     "dynamic_availability_pct": 99.0,
     "all_stressed_pct": 1.0,
     "avg_intra_pjm_overlap_pct": 49.0,
-    "avg_cross_ba_overlap_pct": 34.81578947368421
+    "avg_cross_ba_overlap_pct": 33.470588235294116
   },
   "empirical_destination_lmps": {
-    "capacity_weighted_mean": 169.29745478303664,
-    "capacity_weighted_median": 102.56122183115014,
+    "capacity_weighted_mean": 165.50628055022835,
+    "capacity_weighted_median": 92.4890521111137,
     "note": "Replaces DESTINATION_LMP_CRISIS placeholder in cascade cost model"
   },
   "per_zone": {
@@ -58,7 +58,7 @@
       "zone": "ERCOT_LZ_WEST",
       "rto": "ERCOT",
       "interconnection": "ERCOT",
-      "dc_capacity_mw": 2502.3,
+      "dc_capacity_mw": 2480.0,
       "overlap_pct": 10.0,
       "overlap_hours": 20,
       "dest_mean_during_source_stress": 184.24165000000002,
@@ -110,53 +110,11 @@
       "dest_overall_mean": 47.99788948868115,
       "stress_premium": 59.185828262798154
     },
-    "MISO_ILLINOIS": {
-      "zone": "MISO_ILLINOIS",
+    "MISO_MINN_HUB": {
+      "zone": "MISO_MINN_HUB",
       "rto": "MISO",
       "interconnection": "Eastern",
-      "dc_capacity_mw": 1646.7,
-      "overlap_pct": 66.0,
-      "overlap_hours": 132,
-      "dest_mean_during_source_stress": 165.81785,
-      "dest_median_during_source_stress": 163.61,
-      "dest_p90_during_source_stress": 262.7169999999999,
-      "dest_max_during_source_stress": 411.32,
-      "dest_overall_mean": 39.607641455624,
-      "stress_premium": 126.210208544376
-    },
-    "MISO_INDIANA": {
-      "zone": "MISO_INDIANA",
-      "rto": "MISO",
-      "interconnection": "Eastern",
-      "dc_capacity_mw": 662.7,
-      "overlap_pct": 60.5,
-      "overlap_hours": 121,
-      "dest_mean_during_source_stress": 187.56459999999998,
-      "dest_median_during_source_stress": 176.525,
-      "dest_p90_during_source_stress": 290.154,
-      "dest_max_during_source_stress": 475.04,
-      "dest_overall_mean": 44.595284907597524,
-      "stress_premium": 142.96931509240247
-    },
-    "MISO_MICHIGAN": {
-      "zone": "MISO_MICHIGAN",
-      "rto": "MISO",
-      "interconnection": "Eastern",
-      "dc_capacity_mw": 1953.1,
-      "overlap_pct": 63.0,
-      "overlap_hours": 126,
-      "dest_mean_during_source_stress": 168.6072,
-      "dest_median_during_source_stress": 158.195,
-      "dest_p90_during_source_stress": 285.87999999999994,
-      "dest_max_during_source_stress": 443.72,
-      "dest_overall_mean": 42.61011692904403,
-      "stress_premium": 125.99708307095597
-    },
-    "MISO_MINNESOTA": {
-      "zone": "MISO_MINNESOTA",
-      "rto": "MISO",
-      "interconnection": "Eastern",
-      "dc_capacity_mw": 1322.7,
+      "dc_capacity_mw": 2988.3,
       "overlap_pct": 47.0,
       "overlap_hours": 94,
       "dest_mean_during_source_stress": 129.8156,
@@ -166,25 +124,53 @@
       "dest_overall_mean": 35.53652777777778,
       "stress_premium": 94.27907222222221
     },
-    "MISO_LOUISIANA": {
-      "zone": "MISO_LOUISIANA",
+    "MISO_INDIANA_HUB": {
+      "zone": "MISO_INDIANA_HUB",
       "rto": "MISO",
       "interconnection": "Eastern",
-      "dc_capacity_mw": 319.4,
-      "overlap_pct": 43.0,
-      "overlap_hours": 86,
-      "dest_mean_during_source_stress": 127.03084999999999,
-      "dest_median_during_source_stress": 119.295,
-      "dest_p90_during_source_stress": 216.53499999999994,
-      "dest_max_during_source_stress": 377.0,
-      "dest_overall_mean": 39.181701174994295,
-      "stress_premium": 87.8491488250057
+      "dc_capacity_mw": 598.6,
+      "overlap_pct": 60.5,
+      "overlap_hours": 121,
+      "dest_mean_during_source_stress": 187.56459999999998,
+      "dest_median_during_source_stress": 176.525,
+      "dest_p90_during_source_stress": 290.154,
+      "dest_max_during_source_stress": 475.04,
+      "dest_overall_mean": 44.595284907597524,
+      "stress_premium": 142.96931509240247
     },
-    "MISO_ARKANSAS": {
-      "zone": "MISO_ARKANSAS",
+    "MISO_ILLINOIS_HUB": {
+      "zone": "MISO_ILLINOIS_HUB",
       "rto": "MISO",
       "interconnection": "Eastern",
-      "dc_capacity_mw": 3.5,
+      "dc_capacity_mw": 66.2,
+      "overlap_pct": 66.0,
+      "overlap_hours": 132,
+      "dest_mean_during_source_stress": 165.81785,
+      "dest_median_during_source_stress": 163.61,
+      "dest_p90_during_source_stress": 262.7169999999999,
+      "dest_max_during_source_stress": 411.32,
+      "dest_overall_mean": 39.607641455624,
+      "stress_premium": 126.210208544376
+    },
+    "MISO_MICHIGAN_HUB": {
+      "zone": "MISO_MICHIGAN_HUB",
+      "rto": "MISO",
+      "interconnection": "Eastern",
+      "dc_capacity_mw": 126.3,
+      "overlap_pct": 63.0,
+      "overlap_hours": 126,
+      "dest_mean_during_source_stress": 168.6072,
+      "dest_median_during_source_stress": 158.195,
+      "dest_p90_during_source_stress": 285.87999999999994,
+      "dest_max_during_source_stress": 443.72,
+      "dest_overall_mean": 42.61011692904403,
+      "stress_premium": 125.99708307095597
+    },
+    "MISO_ARKANSAS_HUB": {
+      "zone": "MISO_ARKANSAS_HUB",
+      "rto": "MISO",
+      "interconnection": "Eastern",
+      "dc_capacity_mw": 305.0,
       "overlap_pct": 42.5,
       "overlap_hours": 85,
       "dest_mean_during_source_stress": 109.89740000000002,
@@ -194,33 +180,19 @@
       "dest_overall_mean": 36.03402007757244,
       "stress_premium": 73.86337992242758
     },
-    "MISO_TEXAS": {
-      "zone": "MISO_TEXAS",
+    "MISO_LOUISIANA_HUB": {
+      "zone": "MISO_LOUISIANA_HUB",
       "rto": "MISO",
       "interconnection": "Eastern",
-      "dc_capacity_mw": 0.0,
-      "overlap_pct": 42.5,
-      "overlap_hours": 85,
-      "dest_mean_during_source_stress": 125.5233,
-      "dest_median_during_source_stress": 118.525,
-      "dest_p90_during_source_stress": 214.611,
-      "dest_max_during_source_stress": 420.0,
-      "dest_overall_mean": 38.59683521560575,
-      "stress_premium": 86.92646478439426
-    },
-    "MISO_MS": {
-      "zone": "MISO_MS",
-      "rto": "MISO",
-      "interconnection": "Eastern",
-      "dc_capacity_mw": 0.0,
-      "overlap_pct": 50.0,
-      "overlap_hours": 100,
-      "dest_mean_during_source_stress": 119.36025,
-      "dest_median_during_source_stress": 105.08500000000001,
-      "dest_p90_during_source_stress": 204.65799999999996,
-      "dest_max_during_source_stress": 336.36,
-      "dest_overall_mean": 36.77536618754278,
-      "stress_premium": 82.5848838124572
+      "dc_capacity_mw": 7.0,
+      "overlap_pct": 43.0,
+      "overlap_hours": 86,
+      "dest_mean_during_source_stress": 127.03084999999999,
+      "dest_median_during_source_stress": 119.295,
+      "dest_p90_during_source_stress": 216.53499999999994,
+      "dest_max_during_source_stress": 377.0,
+      "dest_overall_mean": 39.181701174994295,
+      "stress_premium": 87.8491488250057
     },
     "NYISO_ZONE_J": {
       "zone": "NYISO_ZONE_J",
