@@ -1,11 +1,13 @@
 # Data files (download separately, see data/raw/README.md)
 data/raw/*.csv
+data/processed/*.csv
 data/raw/*.parquet
 data/raw/burstgpt_data/
 data/raw/burstgpt/
 # But keep the README and gitkeep
 !data/raw/README.md
 !data/raw/.gitkeep
+
 
 # Outputs are tracked — they are reviewer-facing deliverables,
 # not regenerable build artifacts. Raw data lives in OneDrive and
