@@ -1,6 +1,6 @@
 # Data Center Flexibility as a Resource Adequacy Asset
 
-This repository contains the analysis code and data supporting the Nature Energy manuscript "[PAPER TITLE]" by Christopher Dunlap (University of Chicago, Energy Policy Institute at Chicago / Booth / Harris).
+This repository contains the analysis code and data supporting the Nature Energy manuscript "Data Center Flexibility as a Resource Adequacy Asset" by Christopher Dunlap (University of Chicago, Energy Policy Institute at Chicago / Booth / Harris).
 
 ## Overview
 
@@ -61,14 +61,14 @@ Notebooks communicate through JSON and parquet files in `outputs/contracts/`. Sc
 
 ## Data and code availability
 
-DA LMP data: publicly available from PJM, ERCOT, CAISO, MISO, NYISO market portals. Microsoft Azure LLM Inference Dataset 2024 (DynamoLLM): available at https://github.com/Azure/AzurePublicDataset. BurstGPT: auto-downloads from [TODO GitHub URL].
+DA LMP data: publicly available from PJM, ERCOT, CAISO, MISO, NYISO market portals. Microsoft Azure LLM Inference Dataset 2024 (DynamoLLM): available at https://github.com/Azure/AzurePublicDataset. BurstGPT: available at (https://github.com/HPMLL/BurstGPT).
 
-All analysis code in this repository is released under [TODO LICENSE].
+All analysis code in this repository is released under the MIT License.
 
 ## Citation
 
-[TODO once paper is accepted]
+[TODO]
 
 ## Contact
 
-Christopher Dunlap — [TODO email]
+Christopher Dunlap — cdunlap@chicagobooth.edu
