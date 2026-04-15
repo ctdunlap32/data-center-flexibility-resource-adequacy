@@ -30,21 +30,20 @@ Every numerical claim in the paper is produced by a specific cell. This table is
 
 | Paper claim | Section | Notebook | Cell |
 |---|---|---|---|
-| Ten-parameter cascade framework | §2 | 02 | Cell 2-1 |
-| Cascade central product = 0.0384 | Methods | 02 | Cell 2-1 |
-| Commitment depth (cascade) = 20.4% | §5, Methods | 02 | Cell 2-1 |
-| Variance shares D2/D4/D5/S2 | §2, Methods | 02 | Cell 2-2 |
+| Ten-parameter cascade framework | §2 | 02 | Cell 1-1 |
+| Cascade central product = 0.0384 | Methods | 02 | Cell 1-2 |
+| Commitment depth (cascade) = 20.4% | §5, Methods | 02 | Cell 1-3 |
+| Variance shares D2/D4/D5/S2 | §2, Methods | 02 | Cell 2-1 |
 | 99.0% dynamic availability (ComEd) | §3 | 01 | Cell 1-3 |
-| PJM-DOM 99.5%, ERCOT 100%, CAISO 100% | §3 | 01 | Cell 1-4 |
-| Overlap heatmap (Fig. 3) | §3 | 01 | Cell 1-5 |
+| PJM-DOM 99.5%, ERCOT 100%, CAISO 100% | §3 | 01 | Cell 3-7 |
+| Stress overlap heatmap (Fig. 1) | §3 | 01 | Cell 1-4 |
 | P99 drain time 4.5–12.1s | §4 | 01 | Cell 2-2 |
-| Drain time CDF (Fig. 4) | §4 | 01 | Cell 2-4 |
 | Single facility commit depth 46.9% | §5 | 02 | Cell 3-2 |
 | Empirical fleet commit depth 28.9% | §5 | 02 | Cell 3-3 |
 | Per-GW sweep (46.4%/42.5%/35.8%/26.9%/23.8%) | §5 | 02 | Cell 3-4 |
-| Four-panel conditional MC figure (Fig. 5) | §5 | 02 | Cell 3-5 |
-| 2D sensitivity surface (Fig. 6a) | §5 | 02 | Cell 4-1 |
-| Tornado chart (Fig. 6b) | §5 | 02 | Cell 4-2 |
+| Four-panel conditional MC figure (Fig. 2) | §5 | 02 | Cell 3-5 |
+| 2D sensitivity surface (Fig. 3a) | §7 | 02 | Cell 4-1 |
+| Tornado chart (Fig. 3b) | §7 | 02 | Cell 4-2 |
 | 1 GW: 464 MW curtailable, 427 MW accredited | §6 | 03 | Cell 1-1 |
 | 10 GW: 2,689 MW curtailable, 2,474 MW accredited | §6 | 03 | Cell 1-1 |
 | $77M avoided capacity cost (1 GW) | §6 | 03 | Cell 2-1 |
