@@ -39,16 +39,16 @@ Every numerical claim in the paper is produced by a specific cell. This table is
 | Overlap heatmap (Fig. 3) | §3 | 01 | Cell 1-5 |
 | P99 drain time 4.5–12.1s | §4 | 01 | Cell 2-2 |
 | Drain time CDF (Fig. 4) | §4 | 01 | Cell 2-4 |
-| Single facility commit depth 52.0% | §5 | 02 | Cell 3-2 |
-| Empirical fleet commit depth 26.5% | §5 | 02 | Cell 3-3 |
-| Per-GW sweep (48.7%/39.0%/31.5%/24.6%/22.2%) | §5 | 02 | Cell 3-4 |
+| Single facility commit depth 46.9% | §5 | 02 | Cell 3-2 |
+| Empirical fleet commit depth 28.9% | §5 | 02 | Cell 3-3 |
+| Per-GW sweep (46.4%/42.5%/35.8%/26.9%/23.8%) | §5 | 02 | Cell 3-4 |
 | Four-panel conditional MC figure (Fig. 5) | §5 | 02 | Cell 3-5 |
 | 2D sensitivity surface (Fig. 6a) | §5 | 02 | Cell 4-1 |
 | Tornado chart (Fig. 6b) | §5 | 02 | Cell 4-2 |
-| 1 GW: [TODO] MW curtailable, [TODO] MW accredited | §6 | 03 | Cell 1-1 |
-| 10 GW: [TODO] MW curtailable, [TODO] MW accredited | §6 | 03 | Cell 1-1 |
-| $[TODO]M avoided capacity cost (1 GW) | §6 | 03 | Cell 2-1 |
-| $[TODO]M avoided capacity cost (10 GW) | §6 | 03 | Cell 2-1 |
+| 1 GW: 464 MW curtailable, 427 MW accredited | §6 | 03 | Cell 1-1 |
+| 10 GW: 2,689 MW curtailable, 2,474 MW accredited | §6 | 03 | Cell 1-1 |
+| $77M avoided capacity cost (1 GW) | §6 | 03 | Cell 2-1 |
+| $445M avoided capacity cost (10 GW) | §6 | 03 | Cell 2-1 |
 | IX queue acceleration NPV | §6 | 03 | Cell 3-1 |
 
 ## Repository structure
