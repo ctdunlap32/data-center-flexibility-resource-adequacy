@@ -1,6 +1,6 @@
 # Quantifying AI data center flexibility as a resource adequacy asset
 
-This repository contains the analysis code and data supporting the Nature Energy manuscript "Data Center Flexibility as a Resource Adequacy Asset" by Christopher Dunlap (University of Chicago, Energy Policy Institute at Chicago / Booth / Harris).
+This repository contains the analysis code and data supporting the Nature Energy manuscript "Quantifying AI data center flexibility as a resource adequacy asset" by Christopher Dunlap (University of Chicago, Energy Policy Institute at Chicago / Booth / Harris).
 
 ## Overview
 
