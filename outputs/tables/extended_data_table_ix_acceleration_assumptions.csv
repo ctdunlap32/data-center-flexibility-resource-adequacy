@@ -1,0 +1,10 @@
+Parameter,Value,Description
+GPU_PER_MW_GRID,603.0,GPUs per MW of grid capacity (derived: 10.2 kW / 8 GPUs × 1.3 PUE)
+GPU_RATE_HR,2.2,"H100 spot rate, USD/hour (Jan 2026)"
+WACC,0.1,Weighted average cost of capital
+ACCELERATION_YEARS_CENTRAL,3.0,"Queue acceleration window, central case (years)"
+FACILITY_SIZE_MW,1000.0,Reference facility size (MW)
+NPV_CONSERVATIVE_BILLIONS_USD,16.1,"NPV of accelerated interconnection, conservative (2-year acceleration)"
+NPV_CENTRAL_BILLIONS_USD,23.1,"NPV of accelerated interconnection, central (3-year acceleration)"
+NPV_OPTIMISTIC_BILLIONS_USD,29.5,"NPV of accelerated interconnection, optimistic (4-year acceleration)"
+DOMINANCE_RATIO,714.8,Ratio of IX NPV to annual capacity revenue differential

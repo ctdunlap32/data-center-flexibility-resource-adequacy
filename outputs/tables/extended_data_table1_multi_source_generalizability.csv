@@ -1,0 +1,5 @@
+source_zone,source_rto,source_ic,stress_hours,n_cross_rto_dests,n_cross_ic_dests,dynamic_avail_cross_rto,dynamic_avail_cross_ic,all_stressed_hours,cap_weighted_overlap,summer_hours,summer_avail,winter_hours,winter_avail
+PJM_COMED,PJM,Eastern,200,17,6,99.0,94.0,2,21.582809120718125,102,100.0,87,97.70114942528735
+PJM_DOM,PJM,Eastern,200,17,6,99.5,99.0,1,11.299836050324412,73,100.0,70,98.57142857142858
+ERCOT_LZ_NORTH,ERCOT,ERCOT,200,20,20,100.0,100.0,0,8.247231128909865,104,100.0,39,100.0
+CAISO_NP15,CAISO,Western,200,22,22,100.0,100.0,0,7.761259892851831,39,100.0,137,100.0

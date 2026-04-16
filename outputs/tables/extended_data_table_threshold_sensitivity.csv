@@ -1,0 +1,4 @@
+Top N per year,Total ComEd stress hours,Approx. percentile,Capacity-weighted overlap (%),Any-destination availability (%),All destinations stressed (hours),Baseline
+25,100,99.71,15.15,100.0,0,False
+50,200,99.43,21.58,99.0,2,True
+100,400,98.86,23.87,97.75,9,False

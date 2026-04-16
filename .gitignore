@@ -25,4 +25,5 @@ venv/
 .DS_Store
 Thumbs.db
 
-archive/Tomorrow.md
+archive/Tomorrow.md~$*.docx 
+~WRL*.tmp 
