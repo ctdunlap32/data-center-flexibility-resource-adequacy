@@ -125,7 +125,7 @@ sacrifice sleep for code — the pipeline is done.
 ## Remaining pre-submission tasks (post-Rosner feedback)
 
 ### HIGH PRIORITY
-- [ ] **EPIC article numerical discrepancy**: 52% vs 46.9% single-facility, 25% vs 26.9% fleet. Determine if EPIC article is still editable; either submit correction or add footnote to NE Methods noting the companion article used preliminary estimates that were superseded by the final pipeline reconciliation. Flag to Rosner.
+- [X] **EPIC article numerical discrepancy**: 52% vs 46.9% single-facility, 25% vs 26.9% fleet. Determine if EPIC article is still editable; either submit correction or add footnote to NE Methods noting the companion article used preliminary estimates that were superseded by the final pipeline reconciliation. Flag to Rosner.
 - [ ] Run Extended Data Fig. 2 (drain time sensitivity) once external drive is reconnected and AZURE_DATA_DIR env var is set
 
 ### Medium priority
