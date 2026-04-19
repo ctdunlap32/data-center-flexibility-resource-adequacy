@@ -99,7 +99,7 @@
     "optimistic": 0.15266842599393002
   },
   "commitment_depth_baseline": 0.20377164555264998,
-  "dvfs_floor_facility": 0.175,
+  "flex_floor_facility": 0.175,
   "flex_frac": 0.25,
   "variance_decomposition_eta_squared": {
     "S2": 0.1197280479561233,
@@ -112,5 +112,5 @@
     "E1": 0.005204963490670937,
     "E2": 0.0017297924519660657
   },
-  "notes": "Ten-parameter cascade from NE paper \u00a72. DVFS applied to S1 envelope only (Colangelo et al. 2025)."
+  "notes": "Ten-parameter cascade from NE paper Section 2. Flex applied to S1 envelope only (Colangelo et al. 2025)."
 }
