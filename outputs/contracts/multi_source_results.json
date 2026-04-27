@@ -1,0 +1,311 @@
+{
+  "version": "2.0",
+  "produced_by": "notebook 02 \u2014 multi-source cascade (appended cell)",
+  "sources": [
+    "PJM_COMED",
+    "PJM_DOM",
+    "ERCOT_LZ_NORTH",
+    "CAISO_NP15"
+  ],
+  "scopes": {
+    "mixed_use": 0.43,
+    "inference_dominant": 0.7
+  },
+  "fleet_sizes_swept": [
+    1.0,
+    5.0,
+    10.0
+  ],
+  "results": {
+    "PJM_COMED": {
+      "n_stress_hours": 200,
+      "has_intra_rto_fleet": true,
+      "single_facility": {
+        "mixed_use": {
+          "mean_commit_depth": 0.2461083449537738,
+          "median_commit_depth": 0.24785493749596466,
+          "p5_commit_depth": 0.23681882787161226,
+          "p95_commit_depth": 0.2574920143789974,
+          "cvar5": 0.20578887455388234
+        },
+        "inference_dominant": {
+          "mean_commit_depth": 0.40030964913807954,
+          "median_commit_depth": 0.40342516510668885,
+          "p5_commit_depth": 0.3847758202781099,
+          "p95_commit_depth": 0.4191640799075372,
+          "cvar5": 0.33085269510404297
+        }
+      },
+      "sweep": {
+        "mixed_use": [
+          {
+            "fleet_gw": 1.0,
+            "mean": 0.24567931801646117,
+            "p5": 0.23616134812883116,
+            "pct_constrained": 3.0315000000000003
+          },
+          {
+            "fleet_gw": 5.0,
+            "mean": 0.24189552557199814,
+            "p5": 0.1763913740469305,
+            "pct_constrained": 7.294499999999999
+          },
+          {
+            "fleet_gw": 10.0,
+            "mean": 0.2399991750367737,
+            "p5": 0.15948791278448346,
+            "pct_constrained": 10.27725
+          }
+        ],
+        "inference_dominant": [
+          {
+            "fleet_gw": 1.0,
+            "mean": 0.3984459096043405,
+            "p5": 0.38064398989789777,
+            "pct_constrained": 4.891249999999999
+          },
+          {
+            "fleet_gw": 5.0,
+            "mean": 0.3917143211914567,
+            "p5": 0.2659672934411202,
+            "pct_constrained": 8.88275
+          },
+          {
+            "fleet_gw": 10.0,
+            "mean": 0.3824514760920045,
+            "p5": 0.24882686221871417,
+            "pct_constrained": 28.95525
+          }
+        ]
+      },
+      "empirical_fleet": {
+        "mixed_use": {
+          "mean_commit_depth": 0.23961435721603333,
+          "median_commit_depth": 0.24664966206885028,
+          "p5_commit_depth": 0.17107394580053034,
+          "cvar5": 0.14724618275928658,
+          "n_co_stress_hours": 160,
+          "mean_migrating_mw": 8540.768125,
+          "max_migrating_mw": 14463.700000000003
+        },
+        "inference_dominant": {
+          "mean_commit_depth": 0.37978458465243564,
+          "median_commit_depth": 0.39854809170625455,
+          "p5_commit_depth": 0.2569710627421991,
+          "cvar5": 0.22904526321369076,
+          "n_co_stress_hours": 160,
+          "mean_migrating_mw": 8540.768125,
+          "max_migrating_mw": 14463.700000000003
+        }
+      }
+    },
+    "PJM_DOM": {
+      "n_stress_hours": 200,
+      "has_intra_rto_fleet": true,
+      "single_facility": {
+        "mixed_use": {
+          "mean_commit_depth": 0.2472210004559148,
+          "median_commit_depth": 0.24791440815409818,
+          "p5_commit_depth": 0.2375199924273737,
+          "p95_commit_depth": 0.25756365692680233,
+          "cvar5": 0.22565474430128035
+        },
+        "inference_dominant": {
+          "mean_commit_depth": 0.40242446349838706,
+          "median_commit_depth": 0.4035815946694621,
+          "p5_commit_depth": 0.3866452181935789,
+          "p95_commit_depth": 0.41928967406688755,
+          "cvar5": 0.36711203237703455
+        }
+      },
+      "sweep": {
+        "mixed_use": [
+          {
+            "fleet_gw": 1.0,
+            "mean": 0.24718014171219369,
+            "p5": 0.2374406154002817,
+            "pct_constrained": 0.6565
+          },
+          {
+            "fleet_gw": 5.0,
+            "mean": 0.2467167060200921,
+            "p5": 0.23706608603825002,
+            "pct_constrained": 1.3235000000000001
+          },
+          {
+            "fleet_gw": 10.0,
+            "mean": 0.2459322982537171,
+            "p5": 0.23592980280082715,
+            "pct_constrained": 3.70325
+          }
+        ],
+        "inference_dominant": [
+          {
+            "fleet_gw": 1.0,
+            "mean": 0.4022287829282973,
+            "p5": 0.3863364966811494,
+            "pct_constrained": 0.8677499999999999
+          },
+          {
+            "fleet_gw": 5.0,
+            "mean": 0.4009227451005419,
+            "p5": 0.38476126193208005,
+            "pct_constrained": 2.58775
+          },
+          {
+            "fleet_gw": 10.0,
+            "mean": 0.39405638187012765,
+            "p5": 0.3431380552014863,
+            "pct_constrained": 20.8815
+          }
+        ]
+      },
+      "empirical_fleet": {
+        "mixed_use": {
+          "mean_commit_depth": 0.24618978684191975,
+          "median_commit_depth": 0.24783297935047977,
+          "p5_commit_depth": 0.23654125733086873,
+          "cvar5": 0.20807577363177995,
+          "n_co_stress_hours": 145,
+          "mean_migrating_mw": 4042.862068965518,
+          "max_migrating_mw": 6677.5
+        },
+        "inference_dominant": {
+          "mean_commit_depth": 0.4000260904912597,
+          "median_commit_depth": 0.40332413347460316,
+          "p5_commit_depth": 0.3843620186839289,
+          "cvar5": 0.32814585388809664,
+          "n_co_stress_hours": 145,
+          "mean_migrating_mw": 4042.862068965518,
+          "max_migrating_mw": 6677.5
+        }
+      }
+    },
+    "ERCOT_LZ_NORTH": {
+      "n_stress_hours": 200,
+      "has_intra_rto_fleet": false,
+      "single_facility": {
+        "mixed_use": {
+          "mean_commit_depth": 0.2461083449537738,
+          "median_commit_depth": 0.24785493749596466,
+          "p5_commit_depth": 0.23681882787161226,
+          "p95_commit_depth": 0.2574920143789974,
+          "cvar5": 0.20578887455388234
+        },
+        "inference_dominant": {
+          "mean_commit_depth": 0.4003096491380795,
+          "median_commit_depth": 0.40342516510668885,
+          "p5_commit_depth": 0.3847758202781099,
+          "p95_commit_depth": 0.4191640799075372,
+          "cvar5": 0.3308526951040431
+        }
+      },
+      "sweep": {
+        "mixed_use": [
+          {
+            "fleet_gw": 1.0,
+            "mean": 0.24567931801646117,
+            "p5": 0.23616134812883116,
+            "pct_constrained": 3.0315000000000003
+          },
+          {
+            "fleet_gw": 5.0,
+            "mean": 0.2414854549438096,
+            "p5": 0.17610459791388675,
+            "pct_constrained": 9.0675
+          },
+          {
+            "fleet_gw": 10.0,
+            "mean": 0.22997945237515355,
+            "p5": 0.15833401422323246,
+            "pct_constrained": 42.071999999999996
+          }
+        ],
+        "inference_dominant": [
+          {
+            "fleet_gw": 1.0,
+            "mean": 0.3984459096043404,
+            "p5": 0.38064398989789777,
+            "pct_constrained": 4.891249999999999
+          },
+          {
+            "fleet_gw": 5.0,
+            "mean": 0.38295320541960565,
+            "p5": 0.26465966256859486,
+            "pct_constrained": 30.593500000000002
+          },
+          {
+            "fleet_gw": 10.0,
+            "mean": 0.3416654926385037,
+            "p5": 0.2447606787929749,
+            "pct_constrained": 81.84625
+          }
+        ]
+      },
+      "empirical_fleet": null
+    },
+    "CAISO_NP15": {
+      "n_stress_hours": 200,
+      "has_intra_rto_fleet": false,
+      "single_facility": {
+        "mixed_use": {
+          "mean_commit_depth": 0.24610834495377373,
+          "median_commit_depth": 0.24785493749596466,
+          "p5_commit_depth": 0.23681882787161226,
+          "p95_commit_depth": 0.2574920143789974,
+          "cvar5": 0.20578887455388234
+        },
+        "inference_dominant": {
+          "mean_commit_depth": 0.40030964913807954,
+          "median_commit_depth": 0.40342516510668885,
+          "p5_commit_depth": 0.3847758202781099,
+          "p95_commit_depth": 0.4191640799075372,
+          "cvar5": 0.33085269510404297
+        }
+      },
+      "sweep": {
+        "mixed_use": [
+          {
+            "fleet_gw": 1.0,
+            "mean": 0.24567931801646115,
+            "p5": 0.23616134812883116,
+            "pct_constrained": 3.0315000000000003
+          },
+          {
+            "fleet_gw": 5.0,
+            "mean": 0.24218947324443915,
+            "p5": 0.17704219165239507,
+            "pct_constrained": 6.56725
+          },
+          {
+            "fleet_gw": 10.0,
+            "mean": 0.24082033865694794,
+            "p5": 0.16118366367206347,
+            "pct_constrained": 8.466999999999999
+          }
+        ],
+        "inference_dominant": [
+          {
+            "fleet_gw": 1.0,
+            "mean": 0.39844590960434034,
+            "p5": 0.38064398989789777,
+            "pct_constrained": 4.891249999999999
+          },
+          {
+            "fleet_gw": 5.0,
+            "mean": 0.3927863883231689,
+            "p5": 0.2682828972779327,
+            "pct_constrained": 7.602250000000001
+          },
+          {
+            "fleet_gw": 10.0,
+            "mean": 0.38545884779295375,
+            "p5": 0.2524088493860099,
+            "pct_constrained": 25.697
+          }
+        ]
+      },
+      "empirical_fleet": null
+    }
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "2.0",
   "produced_by": "notebook 01 \u2014 empirical_evidence",
   "throughput_assumption_tok_per_sec": 60,
   "dynamolm": {
@@ -21,9 +21,9 @@
     "p99_drain_time_sec": 12.116666666666667,
     "citation": "Wang et al. 2024 (BurstGPT)"
   },
-  "s3_parameterization": {
-    "value": 0.9,
-    "justification": "P99 drain times across two independent datasets range from 4.5 to 12.1 seconds at 60 tok/s, approximately two orders of magnitude below PJM 10-minute dispatch window. S3 = 0.90 reserves 10% of load for long-running or batched requests.",
+  "drain_ok_parameterization": {
+    "value": 0.95,
+    "justification": "P99 drain times across two independent datasets range from 4.5 to 12.1 seconds at 60 tok/s, approximately two orders of magnitude below PJM 10-minute dispatch window. DRAIN_ok = 0.95 reserves 5% of load for long-running or batched requests, health-check propagation lag, burst-timing tail risk, and orchestration-layer implementation risk.",
     "pjm_dispatch_window_seconds": 600
   }
 }

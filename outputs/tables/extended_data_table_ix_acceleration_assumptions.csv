@@ -7,4 +7,5 @@ FACILITY_SIZE_MW,1000.0,Reference facility size (MW)
 NPV_CONSERVATIVE_BILLIONS_USD,16.1,"NPV of accelerated interconnection, conservative (2-year acceleration)"
 NPV_CENTRAL_BILLIONS_USD,23.1,"NPV of accelerated interconnection, central (3-year acceleration)"
 NPV_OPTIMISTIC_BILLIONS_USD,29.5,"NPV of accelerated interconnection, optimistic (4-year acceleration)"
-DOMINANCE_RATIO,714.8,Ratio of IX NPV to annual capacity revenue differential
+DOMINANCE_RATIO,518.2,Ratio of IX NPV (central) to annual total capacity revenue at mean commitment depth
+DEPTH_1GW_INF_DOM_MEAN,0.398,Mean commitment depth at 1 GW (inference-dominant scope) underlying NPV ratio
