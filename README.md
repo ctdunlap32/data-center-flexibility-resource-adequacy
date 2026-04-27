@@ -4,11 +4,13 @@ This repository contains the analysis code and data supporting the Nature Energy
 
 ## Overview
 
-The analysis quantifies how deeply AI data center fleets can credibly commit as demand response resources, combining a ten-parameter cascade model of spatial migration feasibility with four years of empirical grid stress data across five U.S. regions. Three notebooks reproduce the paper end to end:
+The analysis quantifies how deeply AI data center fleets can credibly commit as demand response resources. The framework decomposes accreditable system slack into three composable mechanisms — spatial migration across grid regions, temporal deferral of non-interactive workloads, and dynamic voltage-frequency scaling on residual compute — each itself a multiplicatively-composed group of parameters representing the conditions that must hold for one MW of that mechanism's contribution to realize during a dispatch event. The three mechanisms compose additively at the megawatt layer with sequential ordering and an explicit overlap correction. The framework is reported under two scope scenarios: mixed-use facilities (φ_inf = 0.43, anchored in McKinsey Dec 2025) and inference-dominant facilities (φ_inf = 0.70, anchored in IEA 2025 and Zhou et al. 2024).
 
-- **Notebook 01 — Empirical Evidence.** Cross-region stress decorrelation analysis (§3) and workload characterization (§4).
-- **Notebook 02 — Cascade and Simulation.** Ten-parameter cascade framework, variance decomposition, conditional Monte Carlo, and sensitivity analysis (§2, §5).
-- **Notebook 03 — System Implications.** ELCC application, avoided capacity cost, and interconnection acceleration NPV (§6).
+Three notebooks reproduce the paper end to end:
+
+- **Notebook 01 — Empirical Evidence.** Cross-region stress decorrelation analysis across five U.S. grid regions (§3) and workload characterization from 49.4 million production inference requests (§4).
+- **Notebook 02 — Cascade and Simulation.** Eleven-parameter cascade framework, variance decomposition, conditional Monte Carlo, per-GW parametric sweep, two-dimensional sensitivity surface, and tornado chart (§2, §5, §7).
+- **Notebook 03 — System Implications.** ELCC application, avoided capacity cost, and interconnection acceleration NPV at two reference scales (1 GW facility and 10 GW fleet) under each scope scenario (§6).
 
 ## Requirements
 
@@ -26,29 +28,33 @@ From the repository root:
 
 ## Claim-to-cell mapping
 
-Every numerical claim in the paper is produced by a specific cell. This table is the authoritative reference for reviewer verification.
+Every numerical claim in the paper is produced by a specific cell. This table is the authoritative reference for reviewer verification. Cell numbers reflect the current state of each notebook.
 
 | Paper claim | Section | Notebook | Cell |
 |---|---|---|---|
-| Ten-parameter cascade framework | §2 | 02 | Cell 1-1 |
-| Cascade central product = 0.0384 | Methods | 02 | Cell 1-2 |
-| Commitment depth (cascade) = 20.4% | §5, Methods | 02 | Cell 1-3 |
-| Variance shares D2/D4/D5/S2 | §2, Methods | 02 | Cell 2-1 |
-| 99.0% dynamic availability (ComEd) | §3 | 01 | Cell 1-3 |
-| PJM-DOM 99.5%, ERCOT 100%, CAISO 100% | §3 | 01 | Cell 3-7 |
-| Stress overlap heatmap (Fig. 1) | §3 | 01 | Cell 1-4 |
-| P99 drain time 4.5–12.1s | §4 | 01 | Cell 2-2 |
-| Single facility commit depth 46.9% | §5 | 02 | Cell 3-2 |
-| Empirical fleet commit depth 28.9% | §5 | 02 | Cell 3-3 |
-| Per-GW sweep (46.4%/42.5%/35.8%/26.9%/23.8%) | §5 | 02 | Cell 3-4 |
-| Four-panel conditional MC figure (Fig. 2) | §5 | 02 | Cell 3-5 |
-| 2D sensitivity surface (Fig. 3a) | §7 | 02 | Cell 4-1 |
-| Tornado chart (Fig. 3b) | §7 | 02 | Cell 4-2 |
-| 1 GW: 464 MW curtailable, 427 MW accredited | §6 | 03 | Cell 1-1 |
-| 10 GW: 2,689 MW curtailable, 2,474 MW accredited | §6 | 03 | Cell 1-1 |
-| $77M avoided capacity cost (1 GW) | §6 | 03 | Cell 2-1 |
-| $445M avoided capacity cost (10 GW) | §6 | 03 | Cell 2-1 |
-| IX queue acceleration NPV | §6 | 03 | Cell 3-1 |
+| Eleven-parameter framework specification (Table M1) | §2, Methods | 02 | TBD |
+| Variance attribution (DEST_absorb 44%, DVFS_headroom 22%, MIG_elig 13%, NIW_share 10%, QUEUE_ok 8%) | Methods | 02 | TBD |
+| 99.0% dynamic availability (ComEd) | §3 | 01 | TBD |
+| Multi-source generalization: PJM-DOM 99.5%, ERCOT-LZ-NORTH 100%, CAISO-NP15 100% | §3 | 01 | TBD |
+| Stress overlap heatmap (Fig. 1) | §3 | 01 | TBD |
+| P99 drain time 4.5–12.12s across two production datasets (49.4M requests, 128 days) | §4 | 01 | TBD |
+| Single-facility 500 MW: mean 40.0%, P5 38.5%, CVaR 33.1% (inference-dominant) | §5 | 02 | TBD |
+| Single-facility 500 MW: mean 24.6%, P5 23.7%, CVaR 20.6% (mixed-use) | §5 | 02 | TBD |
+| Empirical fleet (30 ComEd co-stress hours): mean 33.6% inf-dom / 21.1% mixed-use | §5 | 02 | TBD |
+| Per-GW sweep: 39.8% (1 GW) → 38.5% (10 GW) inference-dominant | §5 | 02 | TBD |
+| Per-GW sweep: 24.6% (1 GW) → 24.1% (10 GW) mixed-use | §5 | 02 | TBD |
+| Destination-constrained share: 4.9% (1 GW) → 25.7% (10 GW) inference-dominant | §5 | 02 | TBD |
+| Three-panel conditional MC figure (Fig. 2) | §5 | 02 | TBD |
+| 2D sensitivity surface 32.5%–40.0% across DEST_absorb × QUEUE_ok at 10 GW (Fig. 3a) | §7 | 02 | TBD |
+| Tornado chart at 10 GW (Fig. 3b) | §7 | 02 | TBD |
+| Source-zone robustness: PJM Dominion 40.2% vs ComEd 40.0% inference-dominant (Extended Data Table 3) | §7 | 02 | TBD |
+| 1 GW inference-dominant: 367 MW accredited (mean), 350 MW (P5) | §6 | 03 | TBD |
+| 10 GW inference-dominant: 3,546 MW accredited (mean), 2,322 MW (P5) | §6 | 03 | TBD |
+| 1 GW mixed-use: 226 MW accredited (mean), 217 MW (P5) | §6 | 03 | TBD |
+| 10 GW mixed-use: 2,216 MW accredited (mean), 1,483 MW (P5) | §6 | 03 | TBD |
+| Avoided capacity cost: $66M/yr (1 GW inf-dom), $638M/yr (10 GW inf-dom) | §6 | 03 | TBD |
+| Avoided capacity cost: $41M/yr (1 GW mixed-use), $399M/yr (10 GW mixed-use) | §6 | 03 | TBD |
+| IX acceleration NPV: $23.1B central (1 GW inf-dom, 3-year window); $16.1B / $29.5B conservative / optimistic (Extended Data Table 2) | §6 | 03 | TBD |
 
 ## Repository structure
 
@@ -60,13 +66,19 @@ Notebooks communicate through JSON and parquet files in `outputs/contracts/`. Sc
 
 ## Data and code availability
 
-DA LMP data: publicly available from PJM, ERCOT, CAISO, MISO, NYISO market portals. Microsoft Azure LLM Inference Dataset 2024 (DynamoLLM): available at https://github.com/Azure/AzurePublicDataset. BurstGPT: available at (https://github.com/HPMLL/BurstGPT).
+DA LMP data: publicly available from PJM Data Miner 2 (https://dataminer2.pjm.com), ERCOT Market Information System (https://www.ercot.com/mp/data-products), CAISO OASIS (http://oasis.caiso.com), MISO Market Reports (https://www.misoenergy.org/markets-and-operations/real-time--market-data), and NYISO Custom Reports (https://www.nyiso.com/custom-reports).
+
+Microsoft Azure LLM Inference Dataset 2024 (DynamoLLM): https://github.com/Azure/AzurePublicDataset under AzureLLMInferenceDataset2024.
+
+BurstGPT: https://github.com/HPMLL/BurstGPT.
+
+Data center location data: U.S. Department of Energy / National Renewable Energy Laboratory Accelerating Speed to Power Data Viewer (https://maps.nrel.gov/speed-to-power), accessed via its public backend API.
 
 All analysis code in this repository is released under the MIT License.
 
 ## Citation
 
-[TODO]
+[TODO — populate after acceptance]
 
 ## Contact
 
