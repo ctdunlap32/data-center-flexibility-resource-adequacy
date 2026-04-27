@@ -32,29 +32,29 @@ Every numerical claim in the paper is produced by a specific cell. This table is
 
 | Paper claim | Section | Notebook | Cell |
 |---|---|---|---|
-| Eleven-parameter framework specification (Table M1) | §2, Methods | 02 | TBD |
-| Variance attribution (DEST_absorb 44%, DVFS_headroom 22%, MIG_elig 13%, NIW_share 10%, QUEUE_ok 8%) | Methods | 02 | TBD |
-| 99.0% dynamic availability (ComEd) | §3 | 01 | TBD |
-| Multi-source generalization: PJM-DOM 99.5%, ERCOT-LZ-NORTH 100%, CAISO-NP15 100% | §3 | 01 | TBD |
-| Stress overlap heatmap (Fig. 1) | §3 | 01 | TBD |
-| P99 drain time 4.5–12.12s across two production datasets (49.4M requests, 128 days) | §4 | 01 | TBD |
-| Single-facility 500 MW: mean 40.0%, P5 38.5%, CVaR 33.1% (inference-dominant) | §5 | 02 | TBD |
-| Single-facility 500 MW: mean 24.6%, P5 23.7%, CVaR 20.6% (mixed-use) | §5 | 02 | TBD |
-| Empirical fleet (30 ComEd co-stress hours): mean 33.6% inf-dom / 21.1% mixed-use | §5 | 02 | TBD |
-| Per-GW sweep: 39.8% (1 GW) → 38.5% (10 GW) inference-dominant | §5 | 02 | TBD |
-| Per-GW sweep: 24.6% (1 GW) → 24.1% (10 GW) mixed-use | §5 | 02 | TBD |
-| Destination-constrained share: 4.9% (1 GW) → 25.7% (10 GW) inference-dominant | §5 | 02 | TBD |
-| Three-panel conditional MC figure (Fig. 2) | §5 | 02 | TBD |
-| 2D sensitivity surface 32.5%–40.0% across DEST_absorb × QUEUE_ok at 10 GW (Fig. 3a) | §7 | 02 | TBD |
-| Tornado chart at 10 GW (Fig. 3b) | §7 | 02 | TBD |
-| Source-zone robustness: PJM Dominion 40.2% vs ComEd 40.0% inference-dominant (Extended Data Table 3) | §7 | 02 | TBD |
-| 1 GW inference-dominant: 367 MW accredited (mean), 350 MW (P5) | §6 | 03 | TBD |
-| 10 GW inference-dominant: 3,546 MW accredited (mean), 2,322 MW (P5) | §6 | 03 | TBD |
-| 1 GW mixed-use: 226 MW accredited (mean), 217 MW (P5) | §6 | 03 | TBD |
-| 10 GW mixed-use: 2,216 MW accredited (mean), 1,483 MW (P5) | §6 | 03 | TBD |
-| Avoided capacity cost: $66M/yr (1 GW inf-dom), $638M/yr (10 GW inf-dom) | §6 | 03 | TBD |
-| Avoided capacity cost: $41M/yr (1 GW mixed-use), $399M/yr (10 GW mixed-use) | §6 | 03 | TBD |
-| IX acceleration NPV: $23.1B central (1 GW inf-dom, 3-year window); $16.1B / $29.5B conservative / optimistic (Extended Data Table 2) | §6 | 03 | TBD |
+| Eleven-parameter framework specification (Table M1) | §2, Methods | 02 | Cell 1-1 |
+| Variance attribution (DEST_absorb 44%, DVFS_headroom 22%, MIG_elig 13%, NIW_share 10%, QUEUE_ok 8%) | Methods | 02 | Cell 2-1 |
+| 99.0% dynamic availability (ComEd) | §3 | 01 | Cell 1-3 |
+| Multi-source generalization: PJM-DOM 99.5%, ERCOT-LZ-NORTH 100%, CAISO-NP15 100% | §3 | 01 | Cell 3-7b |
+| Stress overlap heatmap (Fig. 1) | §3 | 01 | Cell 1-2 |
+| P99 drain time 4.5–12.12s across two production datasets (49.4M requests, 128 days) | §4 | 01 | Cells 2-2, 2-4 |
+| Single-facility 500 MW: mean 40.0%, P5 38.5%, CVaR 33.1% (inference-dominant) | §5 | 02 | Cell 3-2 |
+| Single-facility 500 MW: mean 24.6%, P5 23.7%, CVaR 20.6% (mixed-use) | §5 | 02 | Cell 3-2 |
+| Empirical fleet (30 ComEd co-stress hours): mean 33.6% inf-dom / 21.1% mixed-use | §5 | 02 | Cell 3-3 |
+| Per-GW sweep: 39.8% (1 GW) → 38.5% (10 GW) inference-dominant | §5 | 02 | Cell 3-4 |
+| Per-GW sweep: 24.6% (1 GW) → 24.1% (10 GW) mixed-use | §5 | 02 | Cell 3-4 |
+| Destination-constrained share: 4.9% (1 GW) → 25.7% (10 GW) inference-dominant | §5 | 02 | Cell 3-4 |
+| Three-panel conditional MC figure (Fig. 2) | §5 | 02 | Cell 3-5 |
+| 2D sensitivity surface 32.5%–40.0% across DEST_absorb × QUEUE_ok at 10 GW (Fig. 3a) | §7 | 02 | Cell 4-1 |
+| Tornado chart at 10 GW (Fig. 3b) | §7 | 02 | Cell 4-2 |
+| Source-zone robustness: PJM Dominion 40.2% vs ComEd 40.0% inference-dominant (Extended Data Table 3) | §7 | 02 | Cell 6-1 |
+| 1 GW inference-dominant: 367 MW accredited (mean), 350 MW (P5) | §6 | 03 | Cell 1-1 |
+| 10 GW inference-dominant: 3,546 MW accredited (mean), 2,322 MW (P5) | §6 | 03 | Cell 1-1 |
+| 1 GW mixed-use: 226 MW accredited (mean), 217 MW (P5) | §6 | 03 | Cell 1-1 |
+| 10 GW mixed-use: 2,216 MW accredited (mean), 1,483 MW (P5) | §6 | 03 | Cell 1-1 |
+| Avoided capacity cost: $66M/yr (1 GW inf-dom), $638M/yr (10 GW inf-dom) | §6 | 03 | Cell 2-1 |
+| Avoided capacity cost: $41M/yr (1 GW mixed-use), $399M/yr (10 GW mixed-use) | §6 | 03 | Cell 2-1 |
+| IX acceleration NPV: $23.1B central (1 GW inf-dom, 3-year window); $16.1B / $29.5B conservative / optimistic (Extended Data Table 2) | §6 | 03 | Cell 3-1 |
 
 ## Repository structure
 
