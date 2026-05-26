@@ -76,10 +76,6 @@ Data center location data: U.S. Department of Energy Accelerating Speed to Power
 
 All analysis code in this repository is released under the MIT License.
 
-## Citation
-
-[TODO — populate after acceptance]
-
 ## Contact
 
 Christopher Dunlap — cdunlap@chicagobooth.edu
