@@ -1,6 +1,6 @@
 # Quantifying AI data center flexibility as a resource adequacy asset
 
-This repository contains the analysis code and data supporting the Nature Energy manuscript "Quantifying AI data center flexibility as a resource adequacy asset" by Christopher Dunlap (University of Chicago, Energy Policy Institute at Chicago / Booth / Harris).
+This repository contains the analysis code and data supporting the manuscript "Quantifying AI data center flexibility as a resource adequacy asset" by Chris Dunlap (University of Chicago, Energy Policy Institute at Chicago / Booth / Harris).
 
 ## Overview
 
@@ -72,7 +72,7 @@ Microsoft Azure LLM Inference Dataset 2024 (DynamoLLM): https://github.com/Azure
 
 BurstGPT: https://github.com/HPMLL/BurstGPT.
 
-Data center location data: U.S. Department of Energy / National Renewable Energy Laboratory Accelerating Speed to Power Data Viewer (https://maps.nrel.gov/speed-to-power), accessed via its public backend API.
+Data center location data: U.S. Department of Energy Accelerating Speed to Power Data Viewer (formerly hosted at maps.nrel.gov/speed-to-power, accessed via its public backend API in February 2026). The data viewer was retired in 2026; the extracted dataset is archived in data/raw/dc_capacity_mapped in this repository.
 
 All analysis code in this repository is released under the MIT License.
 
